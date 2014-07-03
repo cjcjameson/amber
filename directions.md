@@ -5,7 +5,8 @@
 1. We **REALLY** recommend that you use agile engineering practices.
   * Build features in vertical slices (from test to css).
   * Re-evaluate your user stories and project goals regularly - don't be afraid to pivot from the original idea (though don't pivot too often)
-  * Develop team workflow agreements around git (see [git workflow](../../git-workflow.md), deployment,  testing, conflict resolution, lunch and other important items.
+  * Develop team workflow agreements around git, deployment, testing, conflict resolution, lunch and other important items.
+  	+ Ours is at: [git workflow](/git-workflow.md)
 
 
 ## What we want to provide
