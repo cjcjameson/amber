@@ -12,9 +12,10 @@
 /log/*.log
 /tmp
 
-# Ignore our DB setup because it has username and password fields
-# Check out our readme for how to create your own.
-/config/database.yml
+# Not ignoring our DB setup (database.yml) because we need it for travis.ci
+
+# Ignoring schema so people create their own
+/db/schema.rb
 
 *.rbc
 capybara-*.html
