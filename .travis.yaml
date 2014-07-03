@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.0.0
+
+env:
+  - DB=postgresql
+
+script: bundle exec rspec spec
+
+# Set up database
+before_script:
+  - psql -c 'create database amber_test;' -U postgres
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
