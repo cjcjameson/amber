@@ -20,14 +20,18 @@ conflict and friction at a minimum
 
 This is due by end of day on Thursday.
 
-* Host your project in the cohort org on github.
-* Create a README with (at least)
- * Project Name and team members
- * Description of Project
- * How to use the code (rake, database, etc.)
- * Link to Heroku
- * Link to (or embedded) your [project workflow document](project-workflow.md)
+* Done
+ * Host your project in the cohort org on github.
+ * Create a README with (at least)
+  * Project Name and team members
+  * Description of Project
+  * Link to Heroku
 
+* To-do
+ * Team Members
+ * Link to (or embedded) your project workflow document
+ * How to use the code (rake, database, etc.)
+ 
 ## MVP
 
 Will be presented on Monday and will be reviewed by the teachers on the same
