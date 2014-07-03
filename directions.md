@@ -26,10 +26,9 @@ This is due by end of day on Thursday.
   * Project Name and team members
   * Description of Project
   * Link to Heroku
+ * Link to (or embedded) your project workflow document
 
 * To-do
- * Team Members
- * Link to (or embedded) your project workflow document
  * How to use the code (rake, database, etc.)
  
 ## MVP

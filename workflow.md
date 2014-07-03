@@ -9,7 +9,7 @@ This is where you document how your team will work.  Spend time up front decidin
 
 ## Team Roles / Accountabilities
     * Lead: Devin
-    * TDD Czars: Allison & CJ
+    * TDD Czars: Allison & C.J.
     * Team happiness engineer & music maestro: YUZU!!
     * Beer purchaser - for testing of course: Devin
     * UI designer: Yuzu
