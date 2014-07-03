@@ -6,6 +6,7 @@
 
 # Ignore bundler config
 /.bundle
+/vendor/bundle
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -14,3 +15,21 @@
 # Ignore our DB setup because it has username and password fields
 # Check out our readme for how to create your own.
 /config/database.yml
+
+*.rbc
+capybara-*.html
+.rspec
+/public/system
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+
+# Secrets are no fun
+config/initializers/secret_token.rb
+config/secrets.yml
+
+Gemfile.lock
+
+.rvmrc
