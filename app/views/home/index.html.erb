@@ -1,5 +1,19 @@
+<header>
+	<h1> AMBER </h1>
+	<h2> This is our title and our header </h2>
+</header>
+
 <%= form_tag("/", method:"post") do %>
   <%= label_tag(:search, "Search for:") %>
   <%= text_field_tag(:search) %>
   <%= submit_tag("Search") %>
 <% end %>
+
+<section>
+	Here are the beers we recommend
+	<article>
+		<span> Beer Name 1 </span>
+		<p> Beer 1 description </p>
+		<div> Beer stats </div>
+	</article>
+</section>
