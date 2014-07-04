@@ -1,5 +1,10 @@
 Amber::Application.routes.draw do
   root to:'home#index'
+
+  match 'beers/search' => 'beers#search' #TODO: test if this is necessary
+
+  match 'beer_styles/search' => 'beer_styles#search' #TODO: test if this is necessary
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
