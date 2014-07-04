@@ -5,7 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+beer_genres = ["Cream Ale / Blonde Ale", "Bitter", "Pale Ale", "IPA", "Double IPA", "Amber Ale / Red Ale", "Scotch Ale", "Brown Ale / Altbier", "Imperial Stout", "Oatmeal Stout", "Old Ale / Strong Ale", "Porter", "Abbey Dubbel", "Abbey Tripel", "Hefewiezen", "Witbier", "American Wheat", "Barley Wine"]
 
+beer_genres.each do |genre|
+  BeerGenre.create(name: genre)
+end
 
 for i in 1..5
   puts i
