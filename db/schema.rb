@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(:version => 20140704031412) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "beer_search_terms", :force => true do |t|
-    t.string   "search_term"
-    t.integer  "beer_style_id"
+  create_table "beer_styles", :force => true do |t|
+    t.string   "name"
+    t.integer  "beer_genre_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
