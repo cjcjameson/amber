@@ -3,7 +3,7 @@ Amber::Application.routes.draw do
 
   match 'beers/search' => 'beers#search' #TODO: test if this is necessary
 
-  match 'beer_styles/search' => 'beer_styles#search' #TODO: test if this is necessary
+  match 'beer_genres/search' => 'beer_genres#search' #TODO: test if this is necessary
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

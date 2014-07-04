@@ -13,17 +13,17 @@
 
 ActiveRecord::Schema.define(:version => 20140704031412) do
 
+  create_table "beer_genres", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "beer_search_terms", :force => true do |t|
     t.string   "search_term"
     t.integer  "beer_style_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-  end
-
-  create_table "beer_styles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "beers", :force => true do |t|

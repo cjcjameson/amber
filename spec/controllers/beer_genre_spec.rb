@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BeerStylesController do
+describe BeerGenresController do
 	context "#search" do
 		it "gets food flavors in" do
 			get :search, {flavor1: "salty", flavor2: "sweet"}
