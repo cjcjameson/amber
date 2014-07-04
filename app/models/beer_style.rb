@@ -1,5 +1,5 @@
 class BeerStyle < ActiveRecord::Base
-	has_many :beer_search_terms
+	belongs_to :beer_genre
 
 	validates_presence_of :name
 end
