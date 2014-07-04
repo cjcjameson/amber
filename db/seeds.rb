@@ -19,11 +19,13 @@ for i in 1..5
      status: result["status"])
 
     if result["available"]
-    	Beer.find(new_beer.id).update_attributes(available: result["available"]["name"])
+    	new_beer.update_attributes(available: result["available"]["name"])
     end
     if result["style"]
-    	Beer.find(new_beer.id).update_attributes(category: result["style"]["category"]["name"],style: result["style"]["name"])
+    	new_beer.update_attributes(category: result["style"]["category"]["name"],style: result["style"]["name"])
     end
-
+    if result["labels"]
+      new_beer.update_attributes(icon_url: result["labels"]["icon"])
+    end
   end
 end

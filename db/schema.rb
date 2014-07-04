@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20140704031412) do
     t.string   "available"
     t.string   "category"
     t.string   "style"
+    t.text     "icon_url"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
