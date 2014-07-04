@@ -7,9 +7,9 @@ Beer pairings for the aficionado
 
 ##How to use the code
 
-###Setting up your database.yml file
+###Setting up your database and rails files
 
-First, create your datbase.yml file (with the below contents), and put it in your config directory. After creating this file:
+First, ensure that you have the database.yml file in your config directory. Then:
 
  - Bundle
  - Run "rake db:create"
