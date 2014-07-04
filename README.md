@@ -7,9 +7,11 @@ Beer pairings for the aficionado
 
 ##How to use the code
 
-###Setting up your database.yml file
+###Setting up your database and rails files
 
-Here's what you need in your datbase.yml file. After creating this file:
+First, ensure that you have the database.yml file in your config directory. Then:
+
+ - Bundle
  - Run "rake db:create"
  - Run "rails server"
  - Check at "localhost:3000"
@@ -50,3 +52,13 @@ Here's what you need in your datbase.yml file. After creating this file:
  - [C.J. Jameson](https://github.com/cjcjameson)
  - [Devin Johnson](https://github.com/djohnson0610) (team lead)
  - [Yuzu Saijo](https://github.com/rubberyuzu)
+
+##Contributing
+At the present time, we are not accepting outside contributions.
+
+##Presenting
+Come see us present on Friday, June 11, 10:00 AM.
+Dev Bootcamp
+633 Folsom St.
+San Francisco CA
+6th Floor
