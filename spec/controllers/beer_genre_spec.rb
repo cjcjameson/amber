@@ -4,15 +4,12 @@ describe BeerGenresController do
 	context "#search" do
 		it "gets food flavors in" do
 			get :search, {flavor1: "salty", flavor2: "sweet"}
-			expect(assigns(:food_flavors).keys).to include("flavor1")
+			expect(assigns(:food_flavors)).to include("salty")
 		end
 
-		it "returns an error if not provided any search terms" do
-			pending "wait until we rename the styles and genres"
-		end
-
-		it  "returns an error if search terms are not flavors" do
-			pending "wait until we rename the styles and genres"
+		it "returns an error if not provided any flavorful search terms" do
+			response = get :search
+			expect(response.status).to be >= 400
 		end
 	end
 end

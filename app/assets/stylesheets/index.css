@@ -1,6 +1,9 @@
 header{
 	text-align:center; 
 }
+.main_logo{
+	font-size: 4em;
+}
 .genre_search_form{
 	text-align: center;
 
@@ -49,5 +52,23 @@ header{
 }
 
 header{
-	margin-top:20%;
+	margin-top:16%;
 }
+
+.bg_img{
+	background-image:url("beer_bg.jpg");
+	background-size:   cover;                    
+  background-repeat: no-repeat;
+	opacity: 0.8;
+	background-repeat:no-repeat;
+	top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;   
+}
+body{
+	font-family: 'Lancelot', cursive;
+}
+
