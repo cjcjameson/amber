@@ -1,13 +1,15 @@
 <header>
-	<h1> AMBER </h1>
-	<h2> This is our title and our header </h2>
+	<h1 class="main_logo"> AMBER </h1>
+	<h2 class="main_header"> This is our title and our header </h2>
 </header>
 
-<%= form_tag("/", method:"post") do %>
-  <%= label_tag(:search, "Search for:") %>
-  <%= text_field_tag(:search) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="genre_search_form">
+	<%= form_tag("beer_genres#search", method:"get") do %>
+	  <%= label_tag(:search, "Search for:") %>
+	  <%= collection_select :food_flavor, :id, FoodFlavor.all, :id, :name %>
+	  <%= submit_tag("Search") %>
+	<% end %>
+</div>
 
 <section>
 	Here are the beers we recommend
