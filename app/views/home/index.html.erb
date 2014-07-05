@@ -3,9 +3,9 @@
 	<h2> This is our title and our header </h2>
 </header>
 
-<%= form_tag("/", method:"post") do %>
+<%= form_tag("beer_genres#search", method:"get") do %>
   <%= label_tag(:search, "Search for:") %>
-  <%= text_field_tag(:search) %>
+  <%= collection_select :food_flavor, :id, FoodFlavor.all, :id, :name %>
   <%= submit_tag("Search") %>
 <% end %>
 
