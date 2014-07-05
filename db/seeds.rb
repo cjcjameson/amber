@@ -33,3 +33,11 @@ for i in 1..5
     end
   end
 end
+
+#==========================
+#==========YUZU============
+#this is for testing the form, to be fixed later
+FoodFlavor.create(name:"sour")
+FoodFlavor.create(name:"sweet")
+FoodFlavor.create(name:"spicy")
+#==========================
