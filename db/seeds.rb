@@ -4,7 +4,7 @@
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# #   Mayor.create(name: 'Emanuel', city: cities.first)
 beer_genres = ["Cream Ale / Blonde Ale", "Bitter", "Pale Ale", "IPA", "Double IPA", "Amber Ale / Red Ale", "Scotch Ale", "Brown Ale / Altbier", "Imperial Stout", "Oatmeal Stout", "Old Ale / Strong Ale", "Porter", "Abbey Dubbel", "Abbey Tripel", "Hefewiezen", "Witbier", "American Wheat", "Barley Wine"]
 
 beer_genres.each do |genre|
@@ -36,8 +36,9 @@ end
 
 #==========================
 #==========YUZU============
-#this is for testing the form, to be fixed later
-FoodFlavor.create(name:"sour")
-FoodFlavor.create(name:"sweet")
-FoodFlavor.create(name:"spicy")
+
+flavors = ["strong","bitter","fried/fatty","spicy","salty","floral","light","citrus/acidic","sweet","spiced","creamy","rich","earthy","nutty","gamey","savory","grilled","smokey","heavy","hearty"]
+flavors.each do |f|
+  FoodFlavor.create(name: f)
+end
 #==========================
