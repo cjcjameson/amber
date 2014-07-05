@@ -6,6 +6,8 @@ Amber::Application.routes.draw do
   match 'beer_genres/search' => 'beer_genres#search' #TODO: test if this is necessary
 
   resources :beers
+
+  resources :foodFlavors
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
