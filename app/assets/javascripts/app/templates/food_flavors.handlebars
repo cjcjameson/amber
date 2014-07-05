@@ -1,0 +1,6 @@
+<h1>Choose Your Flavors!</h1>
+<ul>
+  {{#each controller}}
+    <li><input type="checkbox" name="flavor" value="{{id}}">{{name}}</li>
+  {{/each}}
+</ul>
