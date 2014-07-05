@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140704211328) do
+ActiveRecord::Schema.define(:version => 20140705030127) do
 
   create_table "beer_genres", :force => true do |t|
     t.string   "name"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(:version => 20140704211328) do
   create_table "beers", :force => true do |t|
     t.string   "name"
     t.string   "abv"
-    t.string   "isOrganic"
     t.string   "status"
     t.string   "available"
     t.string   "category"
@@ -44,6 +43,14 @@ ActiveRecord::Schema.define(:version => 20140704211328) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "goes_well_with", :force => true do |t|
+    t.integer  "beer_genre_id"
+    t.integer  "food_flavor_id"
+    t.integer  "intensity"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
 end
