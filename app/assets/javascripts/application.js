@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ./vendor/handlebars
 //= require ./vendor/ember
 //= require ./vendor/ember-data
-//= require ./vendor/handlebars
 //= require_tree ./lib
 //= require_tree ./app/models
 //= require_tree ./app/controllers
