@@ -13,6 +13,8 @@ First, ensure that you have the database.yml file in your config directory. Then
 
  - Bundle
  - Run "rake db:create"
+ - Run "rake db:migrate", and if you want, "rake db:seed"
+   + Our seed files have two different versions. Please contact the team for more information
  - Run "rails server"
  - Check at "localhost:3000"
 

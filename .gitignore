@@ -14,8 +14,6 @@
 
 # Not ignoring our DB setup (database.yml) because we need it for travis.ci
 
-# Ignoring schema so people create their own
-/db/schema.rb
 
 *.rbc
 capybara-*.html
