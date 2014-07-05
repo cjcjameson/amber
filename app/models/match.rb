@@ -1,4 +1,4 @@
-class GoesWellWith < ActiveRecord::Base
+class Match < ActiveRecord::Base
 	belongs_to :beer_genre
 	belongs_to :food_flavor
 

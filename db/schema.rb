@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20140705030127) do
   create_table "beers", :force => true do |t|
     t.string   "name"
     t.string   "abv"
+    t.string   "isOrganic"
     t.string   "status"
     t.string   "available"
     t.string   "category"
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20140705030127) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "goes_well_with", :force => true do |t|
+  create_table "matches", :force => true do |t|
     t.integer  "beer_genre_id"
     t.integer  "food_flavor_id"
     t.integer  "intensity"
