@@ -18,10 +18,10 @@ describe BeerGenresController do
 			expect(response).to be_success
 		end
 
-		it "returns JSON recommending IPA" do
+		it "returns JSON containing IPA" do
 			get :search, {flavor1: "spicy"}
 			beer_genres = JSON.parse(response.body)
-			# p beer_genres
+			#TODO: strengthen this test. If stronger, don't need the above 2
 			# names = beer_genres.map{ |g| g.name }
 			expect(beer_genres.to_s).to include("IPA")
 		end
