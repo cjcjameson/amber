@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(:version => 20140706174303) do
   create_table "beers", :force => true do |t|
     t.string   "name"
     t.string   "abv"
-    t.string   "isOrganic"
-    t.string   "status"
     t.string   "available"
     t.string   "category"
     t.string   "style"
