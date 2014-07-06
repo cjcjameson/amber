@@ -23,4 +23,6 @@ class BeerGenresController < ApplicationController
     end
 
 	end
+
+
 end
