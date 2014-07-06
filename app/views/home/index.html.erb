@@ -5,18 +5,5 @@
 </header>
 
 <div class="genre_search_form">
-	<%= form_tag("beer_genres#search", method:"get") do %>
-	  <%= label_tag(:search, "Search for:") %>
-	  <%= collection_select :food_flavor, :id, FoodFlavor.all, :id, :name %>
-	  <%= submit_tag("Search") %>
-	<% end %>
+	<%= render partial: "/beer_genres/search" %>
 </div>
-
-<section>
-	Here are the beers we recommend
-	<article>
-		<span> Beer Name 1 </span>
-		<p> Beer 1 description </p>
-		<div> Beer stats </div>
-	</article>
-</section>

@@ -1,0 +1,7 @@
+<%= form_tag("beer_genres/search", method: "get") do %>
+	<% @flavors.each do |flavor| %>
+		<%= check_box_tag(flavor.name) %>
+		<%= label_tag(flavor.name, flavor.name) %>
+	<% end %>
+	<%= submit_tag("find beers!") %>
+<% end %>
