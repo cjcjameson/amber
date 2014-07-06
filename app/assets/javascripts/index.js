@@ -44,7 +44,7 @@ function displayGenreMatches(matchArray){
 	for (var match = 0; match < matchArray.length; match ++){
 		var name = matchArray[match].name
 		var genre = $('#genre_template').children().clone()
-		genre.append("<p>"+name+"</p>")
+		genre.append("<p class='white'>"+name+"</p>")
 		genre.append("<button id='"+name+"' class='beer_search'>Get Suggestions!</button>")
 		$('#search_results').append(genre)
 	}
