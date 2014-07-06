@@ -1,6 +1,9 @@
 <h1>Choose Your Flavors!</h1>
+<form action="beer_genres/search" method="GET">
 <ul>
   {{#each controller}}
-    <li><input type="checkbox" name="flavor" value="{{id}}">{{name}}</li>
+  <li><input type="checkbox" name="flavor{{unbound id}}" value="{{unbound name}}">{{name}}</li>
   {{/each}}
+  <input type="submit">
 </ul>
+</form>
