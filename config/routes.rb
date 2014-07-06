@@ -6,6 +6,9 @@ Amber::Application.routes.draw do
   resources :beers
 
   resources :users
+  match 'sessions/new' => 'sessions#new'
+  match 'sessions/create' => 'sessions#create'
+  match 'sessions/exit' => 'sessions#exit'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

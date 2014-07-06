@@ -7,7 +7,11 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:id] = @user.id
-    end
+      flash[:notice] = "Successfully Saved, yo!"
       redirect_to root_path
+    else
+      flash[:notice] = "Invalid Form"
+      render "new"
+    end
   end
 end
