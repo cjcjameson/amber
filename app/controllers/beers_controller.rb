@@ -2,7 +2,6 @@ class BeersController < ApplicationController
   respond_to :json
 	def search
 		@beer_style = params[:beer_style]
-		p @beer_style
 	end
 
   def index
