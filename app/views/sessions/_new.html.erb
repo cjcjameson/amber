@@ -1,0 +1,7 @@
+<%= form_tag("/sessions/create", method: "post") do %>
+  <ul>
+    <li>Username: <%= text_field_tag(:username) %></li>
+    <li>password: <%= text_field_tag(:password) %></li>
+    <li><%= submit_tag("Login") %></li>
+</ul>
+<% end %>

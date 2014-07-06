@@ -1,0 +1,8 @@
+<nav>
+<% if logged_in? %>
+  <p>Welcome <%= @user.username %></p>
+  <%= link_to("Logout", "/sessions/exit") %>
+<% else %>
+  <%= render partial: "/sessions/new" %>
+<% end %>
+</nav>
