@@ -1,6 +1,5 @@
 class BeerGenre < ActiveRecord::Base
-	attr_accessible :name
-	has_many :beer_styles
+	attr_accessible :name, :description
 	has_many :matches
 	has_many :food_flavors, :through => :matches
 
