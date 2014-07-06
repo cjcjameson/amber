@@ -3,7 +3,8 @@ $(document).ready(function(){
 })
 
 function bindEvents(){
-	$('#search_genres').on('submit', getGenres)
+	$('#search_form').on('submit', '#search_genres', getGenres)
+
 }
 
 function getGenres(){
@@ -23,5 +24,13 @@ function getGenres(){
 }
 
 function displayMatches(matchArray){
-	console.log(matchArray)
+	$('#search_results').empty()
+	
+	for (var match = 0; match < matchArray.length; match ++){
+		var name = matchArray[match].name
+		var genre = $('#genre_template').children().clone()
+		genre.append("<p>"+name+"</p>")
+		$('#search_results').append(genre)
+	}
+
 }

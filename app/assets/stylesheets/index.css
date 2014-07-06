@@ -1,10 +1,13 @@
+
 header{
 	text-align:center; 
 }
 .main_logo{
 	font-size: 4em;
 }
-.genre_search_form{
+#search_results{
+    width: 60%;
+    margin: 0 auto;
 	text-align: center;
 
 }
@@ -68,7 +71,18 @@ header{
   position: absolute;
   z-index: -1;   
 }
+
 body{
 	font-family: 'Lancelot', cursive;
 }
 
+
+
+.hidden {
+    display: none
+}
+
+.genre_description {
+    background-color: #B88907;
+    width: 200px;
+}
