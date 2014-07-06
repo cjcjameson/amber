@@ -4,6 +4,11 @@ Amber::Application.routes.draw do
   match 'beers/search' => 'beers#search' #TODO: test if this is necessary
   # match 'beer_genres/search' => 'beer_genres#search' #TODO: test if this is necessary
   resources :beers
+
+  resources :users
+  match 'sessions/new' => 'sessions#new'
+  match 'sessions/create' => 'sessions#create'
+  match 'sessions/exit' => 'sessions#exit'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

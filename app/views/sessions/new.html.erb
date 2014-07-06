@@ -1,0 +1,5 @@
+<%= form_tag(action: 'create') do %>
+  <p>Username: <%= text_field_tag(:username) %></p>
+  <p>Password: <%= text_field_tag(:password) %></p>
+  <p><%= submit_tag("Login") %></p>
+<% end %>
