@@ -88,6 +88,8 @@ class Seed
 
     matches << Match.new(beer_genre: cream_blonde, food_flavor: light, intensity: 5)
     matches << Match.new(beer_genre: cream_blonde, food_flavor: citrus_acidic, intensity: 4)
+    matches << Match.new(beer_genre: cream_blonde, food_flavor: sweet, intensity: 5)
+    matches << Match.new(beer_genre: cream_blonde, food_flavor: spicy, intensity: 4)
     matches << Match.new(beer_genre: bitter_beer, food_flavor: sweet, intensity: 3)
     matches << Match.new(beer_genre: bitter_beer, food_flavor: spicy, intensity: 3)
     matches << Match.new(beer_genre: bitter_beer, food_flavor: fried_fatty, intensity: 3)
@@ -108,8 +110,10 @@ class Seed
     matches << Match.new(beer_genre: scotch_ale, food_flavor: gamey, intensity: 4)
     matches << Match.new(beer_genre: scotch_ale, food_flavor: smokey, intensity: 3)
     matches << Match.new(beer_genre: brown_altbier, food_flavor: savory, intensity: 4)
+    matches << Match.new(beer_genre: brown_altbier, food_flavor: nutty, intensity: 4)
     matches << Match.new(beer_genre: brown_altbier, food_flavor: heavy, intensity: 4)
     matches << Match.new(beer_genre: imperial_stout, food_flavor: creamy, intensity: 3)
+    matches << Match.new(beer_genre: imperial_stout, food_flavor: savory, intensity: 4)
     matches << Match.new(beer_genre: imperial_stout, food_flavor: bitter, intensity: 3)
     matches << Match.new(beer_genre: oatmeal_stout, food_flavor: sweet, intensity: 4)
     matches << Match.new(beer_genre: oatmeal_stout, food_flavor: bitter, intensity: 5)
@@ -118,6 +122,8 @@ class Seed
     matches << Match.new(beer_genre: old_strong, food_flavor: gamey, intensity: 5)
     matches << Match.new(beer_genre: old_strong, food_flavor: strong, intensity: 5)
     matches << Match.new(beer_genre: porter, food_flavor: hearty, intensity: 5)
+    matches << Match.new(beer_genre: porter, food_flavor: smokey, intensity: 5)
+    matches << Match.new(beer_genre: porter, food_flavor: bitter, intensity: 5)
     matches << Match.new(beer_genre: dubbel, food_flavor: salty, intensity: 3)
     matches << Match.new(beer_genre: dubbel, food_flavor: savory, intensity: 5)
     matches << Match.new(beer_genre: tripel, food_flavor: floral, intensity: 3)
@@ -134,6 +140,7 @@ class Seed
     matches << Match.new(beer_genre: american_wheat, food_flavor: citrus_acidic, intensity: 5)
     matches << Match.new(beer_genre: barley_wine, food_flavor: salty, intensity: 3)
     matches << Match.new(beer_genre: barley_wine, food_flavor: creamy, intensity: 5)
+    matches << Match.new(beer_genre: barley_wine, food_flavor: rich, intensity: 5)
 
     matches.each do |match|
       match.save
