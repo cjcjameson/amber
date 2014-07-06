@@ -13,7 +13,12 @@ class BeerGenresController < ApplicationController
 			end
 		end
 		result = result.sort_by{|k,v| v}.reverse #=> this gives you the nested array. [[name: count],[name:count]]
-		@beer_genres = result.map{ |genre_arr| genre_arr.first } #=> this gives you the array of the genres in JSON, sorted by the occurence.
-		render json: @beer_genres
+		@beer_genres = result.map{ |genre_arr| genre_arr.first } 
+		
+		respond_to do |format|
+      format.html
+      format.json { render :json => @beer_genres.to_json }
+    end
+  
 	end
 end

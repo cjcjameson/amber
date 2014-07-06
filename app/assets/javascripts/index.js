@@ -12,7 +12,8 @@ function getGenres(){
 	$.ajax({
 		url: 'beer_genres/search',
 		method: 'GET',
-		data: getData
+		data: getData,
+		dataType: 'json'
 	}).success(function(){
 		console.log("yay!")
 	}).fail(function(){
