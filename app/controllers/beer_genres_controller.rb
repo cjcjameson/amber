@@ -1,10 +1,12 @@
 class BeerGenresController < ApplicationController
 	def search
 		flavors = params.select { |key,flavor| key =~ /flavor/ }.values
+
 		if flavors.length == 0
-			render file: "public/422", status: 422
+			redirect_to "/public/422", status: 422
 			return
 		end
+
 		result = Hash.new
 		flavors.each do |flavor|
 			genres = FoodFlavor.find_by_name(flavor).beer_genres
@@ -19,6 +21,6 @@ class BeerGenresController < ApplicationController
       format.html
       format.json { render :json => @beer_genres.to_json }
     end
-  
+
 	end
 end

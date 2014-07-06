@@ -9,25 +9,25 @@ describe BeerGenresController do
 		end
 
 		it "prepares a beer genre" do
-			get :search, {flavor1: "spicy"}
+			xhr :get, :search, flavor1: "spicy", format: "json"
+
 			expect(assigns(:beer_genres).first.name).to include("IPA")
 		end
 
 		it "returns successfully" do
-			get :search, {flavor1: "spicy"}
+			xhr :get, :search, flavor1: "spicy", format: "json"
 			expect(response).to be_success
 		end
 
 		it "returns JSON containing IPA" do
-			get :search, {flavor1: "spicy"}
+			xhr :get, :search, flavor1: "spicy", format: "json"
+
 			beer_genres = JSON.parse(response.body)
-			#TODO: strengthen this test. If stronger, don't need the above 2
-			# names = beer_genres.map{ |g| g.name }
 			expect(beer_genres.to_s).to include("IPA")
 		end
 
 		it "returns an error if not provided any flavorful search terms" do
-			response = get :search
+			xhr :get, :search, invalid_param: "spicy", format: "json"
 			expect(response.status).to be >= 400
 		end
 	end
