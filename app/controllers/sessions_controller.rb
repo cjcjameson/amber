@@ -16,5 +16,6 @@ class SessionsController < ApplicationController
 
   def exit
     reset_session
+    redirect_to root_path
   end
 end
