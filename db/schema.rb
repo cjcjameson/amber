@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(:version => 20140706174303) do
   end
 
   create_table "users", :force => true do |t|
-    t.string  "username"
-    t.string  "email"
-    t.string  "city"
-    t.string  "password_digest"
-    t.integer "zipcode"
+    t.string "username"
+    t.string "email"
+    t.string "city"
+    t.string "password_digest"
+    t.string "zipcode"
   end
 
 end
