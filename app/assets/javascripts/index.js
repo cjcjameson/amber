@@ -14,9 +14,7 @@ function getGenres(){
 		method: 'GET',
 		data: getData,
 		dataType: 'json'
-	}).success(function(data){
-		displayMatches(data)
-	})
+	}).success(displayMatches)
 		.fail(function(){
 		console.log("boo!")
 	})
