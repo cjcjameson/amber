@@ -34,6 +34,7 @@ function getBeers(){
 		var genre = beers[0].category
 		var box = $('.genre_description.'+genre+'')
 		box.append('<ul class='+genre+'></ul>')
+		$('button#'+genre+'').remove();
 		for (var i=0; i<beers.length; i++){
 			$('ul.'+genre+'').append('<li>'+beers[i].name+'</li>')
 		}
