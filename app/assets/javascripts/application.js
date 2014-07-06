@@ -12,17 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ./vendor/handlebars
-//= require ./vendor/ember
-//= require ./vendor/ember-data
 //= require_self
-//= require ./router
-//= require_tree ./app/models
-//= require_tree ./app/controllers
-//= require_tree ./app/views
-//= require_tree ./app/helpers
-//= require_tree ./app/templates
-//= require_tree ./app/routes
-//= require_tree ./app/components
-Amber = Ember.Application.create();
 //= require_tree .
