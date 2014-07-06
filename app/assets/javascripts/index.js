@@ -41,9 +41,12 @@ function displayGenreMatches(matchArray){
 	
 	for (var match = 0; match < matchArray.length; match ++){
 		var name = matchArray[match].name
+		debugger
+		var description = matchArray[match].description
 		var genre = $('#genre_template').children().clone()
 		genre.addClass(''+name+'')
-		genre.append("<p'>"+name+"</p>")
+		genre.append("<h4>"+name+"</h4>")
+		genre.append('<p>'+description+'</p>')
 		genre.append("<button id='"+name+"' class='beer_search'>Get Suggestions!</button>")
 		$('#search_results').append(genre)
 	}
@@ -51,8 +54,9 @@ function displayGenreMatches(matchArray){
 
 
 function displayBeers(data){
+	$('.beer_list').empty();
 	var beers = data.beers
 	for (var i=0; i<beers.length; i++){
-		$('body').append('<p>'+ beers[i].name +'</p>')
+		$('.beer_list').append('<li>'+ beers[i].name +'</li>')
 	}
 }
