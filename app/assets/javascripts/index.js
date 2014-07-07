@@ -27,16 +27,7 @@ function getBeers(){
 		method: 'GET',
 		data: {genre: event.target.id},
 		dataType: 'json'
-	}).success(function(data){
-		var beers = data.beers
-		var genre = beers[0].category
-		var box = $('.genre_description.'+genre+'')
-		box.append('<ul class='+genre+'></ul>')
-		$('button#'+genre+'').remove();
-		for (var i=0; i<beers.length; i++){
-			$('ul.'+genre+'').append('<li>'+beers[i].name+'</li>')
-		}
-	})
+	}).success(displayBeers)
 		.fail(function(){
 		console.log("boo!")
 	})
@@ -48,10 +39,22 @@ function displayGenreMatches(matchArray){
 	
 	for (var match = 0; match < matchArray.length; match ++){
 		var name = matchArray[match].name
+		debugger
+		var description = matchArray[match].description
 		var genre = $('#genre_template').children().clone()
 		genre.addClass(''+name+'')
-		genre.append("<p'>"+name+"</p>")
-		genre.append("<button id='"+name+"' class='beer_search'>Get Suggestions!</button>")
+		genre.append("<h4>"+name+"</h4>")
+		genre.append('<p>'+description+'</p>')
+		genre.append("<button id='"+name+"' class='beer_search absolute'>Get Suggestions!</button>")
 		$('#search_results').append(genre)
+	}
+}
+
+
+function displayBeers(data){
+	$('.beer_list').empty();
+	var beers = data.beers
+	for (var i=0; i<beers.length; i++){
+		$('.beer_list').append('<li>'+ beers[i].name +'</li>')
 	}
 }
