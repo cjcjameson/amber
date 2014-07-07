@@ -66,23 +66,27 @@ function initialize() {
 	geocoder = new google.maps.Geocoder();
 	var latlng = new google.maps.LatLng(lat, lng);
 	var mapOptions = {
-		zoom: 15,
+		zoom: 10,
 		center: latlng
 	}
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	var addresses = $('.address')
-	for(i in addresses) {
+	var addressList = []
+	for (i = 0; i < 10; i ++) {
 		var address = $(addresses[i]).html()
-		geocoder.geocode({ 'address': address}, function(results, status){
+		addressList.push(address)
+	}
+	for (i in addressList){
+		var address = addressList[i]
+		geocoder.geocode({'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-				map.setCenter(results[0].geometry.location);
-				var marker = new google.maps.Marker({
-					map: map,
-					position: results[0].geometry.location
-				});
-			}	else {
-					console.log(status);
-				}
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        console.log("Geocode was not successful for the following reason: " + status);
+      }
 		});
 	}
 }
