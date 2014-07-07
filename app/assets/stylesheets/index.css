@@ -103,3 +103,6 @@ ul{
     color: #B88907;
 }
 
+.error_messages {
+    border: 2px red solid;
+}
