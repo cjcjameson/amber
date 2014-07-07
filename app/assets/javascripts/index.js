@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	bindEvents()
+	initialize()
 })
 
 function bindEvents(){
@@ -45,7 +46,7 @@ function getBeers(){
 
 function displayGenreMatches(matchArray){
 	$('#search_results').empty()
-	
+
 	for (var match = 0; match < matchArray.length; match ++){
 		var name = matchArray[match].name
 		var genre = $('#genre_template').children().clone()
@@ -53,5 +54,35 @@ function displayGenreMatches(matchArray){
 		genre.append("<p'>"+name+"</p>")
 		genre.append("<button id='"+name+"' class='beer_search'>Get Suggestions!</button>")
 		$('#search_results').append(genre)
+	}
+}
+
+var geocoder;
+var map;
+
+function initialize() {
+	var lat = $('.lat').html();
+	var lng = $('.lng').html();
+	geocoder = new google.maps.Geocoder();
+	var latlng = new google.maps.LatLng(lat, lng);
+	var mapOptions = {
+		zoom: 15,
+		center: latlng
+	}
+	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	var addresses = $('.address')
+	for(i in addresses) {
+		var address = $(addresses[i]).html()
+		geocoder.geocode({ 'address': address}, function(results, status){
+			if (status == google.maps.GeocoderStatus.OK) {
+				map.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+					map: map,
+					position: results[0].geometry.location
+				});
+			}	else {
+					console.log(status);
+				}
+		});
 	}
 }
