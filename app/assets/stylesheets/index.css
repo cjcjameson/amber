@@ -2,16 +2,13 @@
 body, html {
     margin: 0;
     padding: 0;
+    height: 75%;
 }
-html {
+#top_wrapper {
     background-image:url("beerfoam.png");
-    background-size: cover;                    
+    background-position: bottom;               
     background-repeat: no-repeat;
-}
-body{
-    width: 100%;
-    height: 100%;
-    position: absolute;
+
 }
 
 @font-face {
@@ -130,27 +127,24 @@ body{
 this styling allows search results to be positioned relative
 and allow it to strech to the bottom of the page*/
 #search_viewport {
-    height: 55%;
-}
-
-#search_viewport:before {
-    content: '';
-    float: left;
+    background-color: #FFE684;
     height: 100%;
 }
 
 /*>>>>>   div that holds the results of searches  <<<<<*/
 #search_results{
-    /*opacity: 0.8;*/
     background-color: #FFE684;
     position: relative;
-    top: 5px;
+    bottom: 0px;
 }
+
 #search_results:after {
     content: '';
     display: block;
     clear: both;
 }
+
+
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 

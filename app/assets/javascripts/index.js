@@ -16,6 +16,7 @@ function failedResponse(){
 }
 
 function getBeers(){
+	debugger;
 	$.ajax({
 		url: 'beers/search',
 		method: 'GET',
