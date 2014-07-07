@@ -42,10 +42,10 @@ class Seed
      "Brown Porter", "Golden or Blonde Ale"]
     abv = [3.8, 5.8, 5.2, 5.6]
     available = ["Year Round", "Seasonal"]
-    icon_url = "https://s3.amazonaws.com/brewerydbapi/beer/Pgm9vR/upload_Ik6qO2-medium.png"
+    label_url = "https://s3.amazonaws.com/brewerydbapi/beer/Pgm9vR/upload_Ik6qO2-medium.png"
     description = "It's good!"
     names.each_with_index do |name, index|
-      Beer.create(name: name, abv: abv[index % 4], available: available[index % 2], category: categories[index % 4], style: styles[index % 4], icon_url: icon_url, description: description)
+      Beer.create(name: name, abv: abv[index % 4], available: available[index % 2], category: categories[index % 4], style: styles[index % 4], label_url: label_url, description: description)
     end
   end
 
