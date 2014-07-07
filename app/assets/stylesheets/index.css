@@ -141,8 +141,8 @@ and allow it to strech to the bottom of the page*/
 
 /*>>>>>   div that holds the results of searches  <<<<<*/
 #search_results{
-    opacity: 0.8;
-    background-color: #FFE066;
+    /*opacity: 0.8;*/
+    background-color: #FFE684;
     position: relative;
     top: 5px;
 }
@@ -194,11 +194,4 @@ holds info about each genre match*/
 }
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-
-
-
-
-.error_messages {
-    border: 2px red solid;
-}
 

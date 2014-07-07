@@ -1,28 +1,18 @@
-<%= form_for @user, url: {action: "create"}, html: {class: "form"} do |f| %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Amber</title>
+  <%= stylesheet_link_tag "new_user", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
 
-  <% if @user.errors.any? %>  
-    <div class="error_messages">  
-      <h2>Form is invalid</h2>  
-      <ul>  
-        <% @user.errors.full_messages.each do |message| %>  
-          <li><%= message %></li>  
-        <% end %>  
-      </ul>  
-    </div>  
-  <% end %>
+<body>
+
+  <%= render partial: "new_user" %>
+  <h1 class="amber_font center_align"> Create an account with Amber! </h1>
+
+</body>
+</html>
 
 
-  <p><%= f.label :username %>
-  <%= f.text_field :username %></p>
-  <p><%= f.label :email %>
-  <%= f.text_field :email %></p>
-  <p><%= f.label :city %>
-  <%= f.text_field :city %></p>
-  <p><%= f.label :zipcode %>
-  <%= f.text_field :zipcode %></p>
-  <p><%= f.label :password %>
-  <%= f.password_field :password %></p>
-  <p><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></p>
-  <p><%= f.submit "Create" %></p>
-<% end %>
