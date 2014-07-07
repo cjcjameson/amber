@@ -33,7 +33,7 @@ body, html {
     display: inline;
 }
 
-.main_header {
+.clear_margins {
     margin: 0px;
 }
 
@@ -47,6 +47,10 @@ body, html {
 
 #search_form_holder {
     width: 550px;
+}
+
+#find_genre_submit {
+    width: 100%;
 }
 
 
