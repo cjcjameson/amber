@@ -3,7 +3,7 @@ FactoryGirl.define do
   	name "Coors"
   	abv 3.4
   	available "Y"
-  	category "Lager"
+  	category "Bitter"
   	style "American Water-Beer"
   	description "Rocky mountain cold"  	
   end
