@@ -3,8 +3,8 @@ $(document).ready(function(){
 })
 
 function bindEvents(){
-	$('#search_form').on("ajax:success",'#search_genres',getGenres)
-	$('#search_form').on("ajax:error",'#search_genres',failedResponse)
+	$('#search_form_holder').on("ajax:success",'#search_genres',getGenres)
+	$('#search_form_holder').on("ajax:error",'#search_genres',failedResponse)
 	$('#search_results').on('click', '.beer_search', getBeers)
 }
 
