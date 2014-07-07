@@ -1,8 +1,16 @@
+<div id="overlay">
+  <div class="modal">
+  </div>
+  <div class="main_genres">
 <ul>
 <% @beer_genres.each do |g| %>
 <li><%= g.name %><br>
 <%= g.description %><br>
-<%= button_to "browse beers","/beer_genres/#{g.id}/beers", :method => "get"%>
+<%= button_to "browse beers","/beer_genres/#{g.id}/beers", :method => "get", class: "beer_modal_show", remote: true%>
 </li>
 <%end%>	
 </ul>
+</div>
+
+
+</div>
