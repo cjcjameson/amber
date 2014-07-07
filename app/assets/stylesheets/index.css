@@ -122,3 +122,8 @@ body{
 .absolute{
     position: absolute;
 }
+
+.error_messages {
+    border: 2px red solid;
+}
+
