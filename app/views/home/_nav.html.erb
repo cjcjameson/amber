@@ -1,12 +1,11 @@
 <nav>
-  <%= link_to("Home", root_path) %>
-<% if logged_in? %>
-  <p>Welcome <%= @user.username %></p>
-  <%= link_to("Logout", "/sessions/exit") %>
-<% else %>
-  <ul>
-    <%= render partial: "/sessions/new" %>
-    <li><%= link_to("Create Account", "users/new") %></li>
-  </ul>
-<% end %>
+	<% if logged_in? %>
+	  <p class="centered_text">Welcome <%= @user.username %></p>
+	  <%= link_to("Logout", "/sessions/exit") %>
+	<% else %>
+	  <ul id="top_nav" class="float_right">
+	    <%= render partial: "/sessions/new" %>
+	    <li class="right_margin_buffer"><%= link_to("Create Account", "users/new") %></li>
+	  </ul>
+	<% end %>
 </nav>

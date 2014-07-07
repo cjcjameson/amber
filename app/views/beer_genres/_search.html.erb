@@ -1,7 +1,27 @@
-<%= form_tag("beer_genres/search", method: "get", id: "search_genres", remote: true) do %>
-	<% @flavors.each do |flavor| %>
-		<%= check_box_tag("flavor#{flavor.id}", flavor.name) %>
-		<%= label_tag(flavor.name, flavor.name)%>
+
+<%= form_tag("beer_genres/search", method: "get", id: "search_genres") do %>
+	<table id="flavor_table" class="centered_block">
+	<% @flavors.each_with_index do |flavor, index| %>
+		<% if index % 4 == 0 %>
+			<tr>
+				<td>
+					<%= check_box_tag("flavor#{flavor.id}", flavor.name) %>
+					<%= label_tag(flavor.name, flavor.name)%>
+				</td>
+		<% elsif index % 4 == 3 %>
+				<td>
+					<%= check_box_tag("flavor#{flavor.id}", flavor.name) %>
+					<%= label_tag(flavor.name, flavor.name)%>
+				</td>
+			</tr>
+		<% else %>
+			<td>
+				<%= check_box_tag("flavor#{flavor.id}", flavor.name) %>
+				<%= label_tag(flavor.name, flavor.name)%>
+			</td>
+		<% end %>
 	<% end %>
-	<%= submit_tag("find beers!") %>
+	</table>
+	<%= submit_tag("find beers!", id: "find_genre_submit") %>
+
 <% end %>
