@@ -33,7 +33,8 @@ describe("suite wide mocking ajax", function() {
         "status": 200,
         "contentType": 'json',
         "responseText": 'whatever'
-      })
+      });
+      expect(doneFn).toHaveBeenCalledWith('whatever');
     });
   });
 });
