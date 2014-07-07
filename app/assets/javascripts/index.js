@@ -5,6 +5,7 @@ $(document).ready(function(){
 function bindEvents(){
 	$('#search_form').on("ajax:success",'#search_genres',getGenres)
 	$('#search_form').on("ajax:error",'#search_genres',failedResponse)
+	$('#search_results').on('click', '.beer_search', getBeers)
 }
 
 function getGenres(e, data, status, xhr){
@@ -26,13 +27,11 @@ function getBeers(){
 	})
 }
 
-
 function displayGenreMatches(matchArray){
 	$('#search_results').empty()
 	
 	for (var match = 0; match < matchArray.length; match ++){
 		var name = matchArray[match].name
-		debugger
 		var description = matchArray[match].description
 		var genre = $('#genre_template').children().clone()
 		genre.addClass(''+name+'')
@@ -47,6 +46,7 @@ function displayGenreMatches(matchArray){
 function displayBeers(data){
 	$('.beer_list').empty();
 	var beers = data.beers
+	debugger
 	for (var i=0; i<beers.length; i++){
 		$('.beer_list').append('<li>'+ beers[i].name +'</li>')
 	}
