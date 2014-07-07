@@ -1,8 +1,8 @@
 Amber::Application.routes.draw do
   root to:'home#index'
   get 'beer_genres/search' => 'beer_genres#search'
-  get 'beer_genres/show' => 'beer_genres#show'
-  get 'beer_genres/:id/beers'
+  get 'beer_genres' => 'beer_genres#index'
+  get 'beer_genres/:id/beers'=> 'beer_genres#show'
 
   match 'beers/search' => 'beers#search' #TODO: test if this is necessary
   # match 'beer_genres/search' => 'beer_genres#search' #TODO: test if this is necessary

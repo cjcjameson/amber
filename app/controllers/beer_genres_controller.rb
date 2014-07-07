@@ -25,8 +25,13 @@ class BeerGenresController < ApplicationController
 
 	end
 
-	def show
+	def index
 		@beer_genres = BeerGenre.all
+	end
+
+	def show
+		@genre = BeerGenre.find(params[:id]).name
+		@beers = Beer.where('category = ?', @genre)
 	end
 
 

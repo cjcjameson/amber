@@ -1,8 +1,7 @@
 <ul>
-<% @beer_genres.each do |g| %>
-<li><%= g.name %><br>
-<%= g.description %><br>
-<%= button_to "browse beers", {action:'beer_genres/#{g.id}/beers'}, remote: true %>
+<% @beers.each do |b| %>
+<li><%= b.name %><br>
+<%= b.description %>
 </li>
-<%end%>	
+<% end %>
 </ul>
