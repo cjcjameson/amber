@@ -1,1 +1,6 @@
-<%= @response %>
+<%= form_tag("/search/result", method: "post") do %>
+<ul>
+  <li><%= text_field_tag(:zipcode) %></li>
+  <li><%= submit_tag("search") %></li>
+</ul>
+<% end %>

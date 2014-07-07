@@ -1,5 +1,8 @@
 class SearchController < ApplicationController
   def index
+  end
+
+  def result
    consumer_key = CONFIG["yelp"]["consumer_key"]
    consumer_secret = CONFIG["yelp"]["consumer_secret"]
    token = CONFIG["yelp"]["token"]
@@ -8,7 +11,9 @@ class SearchController < ApplicationController
    consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
 access_token = OAuth::AccessToken.new(consumer, token, token_secret)
 
-  path = "/v2/search?term=beer+stores&location=94127"
-  @response = access_token.get(path).body
+    path = "/v2/search?term=beer+stores&location=#{params[:zipcode]}"
+    response = JSON.parse(access_token.get(path).body)
+    @response_data = response["businesses"]
+    render "result"
   end
 end
