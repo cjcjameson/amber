@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140706205203) do
+ActiveRecord::Schema.define(:version => 20140707224551) do
 
   create_table "beer_genres", :force => true do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20140706205203) do
     t.string   "available"
     t.string   "category"
     t.string   "style"
-    t.text     "icon_url"
+    t.text     "label_url"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
