@@ -34,9 +34,9 @@ function displayGenreMatches(matchArray){
 		var name = matchArray[match].name
 		var description = matchArray[match].description
 		var genre = $('#genre_template').children().clone()
-		genre.addClass(''+name+'')
-		genre.append("<h4>"+name+"</h4>")
-		genre.append('<p>'+description+'</p>')
+		genre.addClass(name)
+		genre.append("<h4 class='centered_text'>"+name+"</h4>")
+		genre.append('<p class="small_side_margins">'+description+'</p>')
 		genre.append("<button id='"+name+"' class='beer_search absolute'>Get Suggestions!</button>")
 		$('#search_results').append(genre)
 	}

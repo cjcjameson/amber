@@ -2,6 +2,21 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
+body{
+    background-image:url("beerfoam.png");
+	background-size: cover;                    
+    background-repeat: no-repeat;
+	opacity: 0.8;
+	background-repeat:no-repeat;
+	top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;   
+}
+
 @font-face {
     font-family: 'mojito';
     src: url('/assets/fonts/mojito.ttf');
@@ -42,6 +57,7 @@ body, html {
     border: 0;
     margin-top: 0px;
     box-shadow: inset 0 12px 12px -12px rgba(173,140,7,0.5);
+    box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
     width: 450px;
 }
 
@@ -56,81 +72,31 @@ body, html {
 
 .main_logo{
     /*font-family: 'mojito';*/
-	font-size: 4em;
+    font-size: 4em;
     margin: 0px;
 }
-#search_results{
-    width: 60%;
-    margin: 0 auto;
-	text-align: center;
 
+/***   div that holds the results of genre search   */
+#search_results{
+    width: 880px;
+    margin: 0 auto;
+}
+#search_results:after {
+    content: "";
+    display:table;
+    clear: both;
+}
+
+.small_side_margins {
+    margin: 0px 8px;
 }
 #food_flavor_id{
-	border:1px solid #777;
+    border:1px solid #777;
     padding: 5px;
     color: #999;
     background: #fff;
     border-radius: 5px;
 }
-
-/*this is gradient code for button below*/
-.genre_search_form input{
-	 border:1px solid #777;
-    padding: 4px 10px;
-    color: #fff;
-    cursor: pointer;
-    background: #428ec9;
-    border-radius: 5px;
-     
-/* Webkit */
-    background: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(#99c9e5),
-        to(#428ec9)
-        );
-    -webkit-border-radius: 5px;
-    -webkit-box-shadow: 1px 1px 1px #fff;
-         
-/* Firefox */
-    background: -moz-linear-gradient(
-        top,
-        #99c9e5,
-        #428ec9
-        );
-    -moz-border-radius: 5px;
-    -moz-box-shadow: 1px 1px 1px #fff;
-     
-/* IE */
-    filter:progid:DXImageTransform.Microsoft.gradient
-        (startColorstr=#ff99c9e5,endColorstr=#ff428ec9);
-    zoom: 1;
-}
-
-/*header{
-	margin-top:16%;
-}*/
-
-.bg_img{
-	background-image:url("beer_bg.jpg");
-	background-size:   cover;                    
-  background-repeat: no-repeat;
-	opacity: 0.8;
-	background-repeat:no-repeat;
-	top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;   
-}
-
-/*body{
-	font-family: 'Lancelot', cursive;
-}*/
-
-
 
 .hidden {
     display: none
@@ -138,18 +104,15 @@ body, html {
 
 .genre_description {
     color: white;
+    border: 1px solid black;
     margin-top: 2%;
     background-color: #B88907;
-    width: 200px;
-    height: 280px;
+    width: 208px;
+    height: 290px;
     float: left;
     margin-right:10px; 
 }
-#search_results{
-    position:relative;
-    width: 100%;
-    height: 350px;
-}
+
 .beer_list{
     list-style: none;
     text-align: center;
