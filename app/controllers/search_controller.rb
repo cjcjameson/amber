@@ -10,8 +10,8 @@ class SearchController < ApplicationController
    api_host = 'api.yelp.com'
    consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
 access_token = OAuth::AccessToken.new(consumer, token, token_secret)
-
-    path = "/v2/search?term=#{params[:search_term]}&location=#{params[:zipcode]}"
+    search_term = params[:search_term].gsub(' ', '+')
+    path = "/v2/search?term=#{search_term}&location=#{params[:zipcode]}"
     response = JSON.parse(access_token.get(path).body)
     @latitude = response["region"]["center"]["latitude"]
     @longitude = response["region"]["center"]["longitude"]

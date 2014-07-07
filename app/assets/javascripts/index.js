@@ -59,6 +59,7 @@ function displayGenreMatches(matchArray){
 
 var geocoder;
 var map;
+var infoWindow;
 
 function initialize() {
 	var lat = $('.lat').html();
@@ -72,9 +73,12 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	var addresses = $('.address')
 	var addressList = []
+  infoWindow = new google.maps.InfoWindow({
+        	content: "..."
+        })
 	for (i = 0; i < 10; i ++) {
-		var address = $(addresses[i]).html()
-		addressList.push(address)
+		var addressItem = $(addresses[i]).html()
+		addressList.push(addressItem)
 	}
 	for (i in addressList){
 		var address = addressList[i]
@@ -82,13 +86,13 @@ function initialize() {
 			if (status == google.maps.GeocoderStatus.OK) {
         var marker = new google.maps.Marker({
             map: map,
-            position: results[0].geometry.location
+            position: results[0].geometry.location,
+           	html: '<div class="infoWindow">' + results[0].formatted_address + '</div>'
         });
-        google.maps.event.addEventListener(marker, 'click', function(){
-        	infoWindow.open(map, marker)
+        google.maps.event.addListener(marker, 'click', function(){
+        	infoWindow.setContent(this.html)
+        	infoWindow.open(map, this)
         });
-        var infoWindow = new google.maps.InfoWindow(){}
-
       } else {
         console.log("Geocode was not successful for the following reason: " + status);
       }
