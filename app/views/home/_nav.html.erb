@@ -1,0 +1,12 @@
+<nav>
+  <%= link_to("Home", root_path) %>
+<% if logged_in? %>
+  <p>Welcome <%= @user.username %></p>
+  <%= link_to("Logout", "/sessions/exit") %>
+<% else %>
+  <ul>
+    <%= render partial: "/sessions/new" %>
+    <li><%= link_to("Create Account", "users/new") %></li>
+  </ul>
+<% end %>
+</nav>

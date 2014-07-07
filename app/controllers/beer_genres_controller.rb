@@ -15,6 +15,7 @@ class BeerGenresController < ApplicationController
 			end
 		end
 		result = result.sort_by{|k,v| v}.reverse #=> this gives you the nested array. [[name: count],[name:count]]
+		result = result[0,4]
 		@beer_genres = result.map{ |genre_arr| genre_arr.first } 
 		
 		respond_to do |format|
