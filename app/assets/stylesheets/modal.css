@@ -31,3 +31,6 @@
      -webkit-filter: blur(5px) grayscale(50%);
      -webkit-transform: scale(0.98);
 }
+.beer_modal_show{
+     color:#B88907;
+}

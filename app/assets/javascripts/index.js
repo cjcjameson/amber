@@ -6,7 +6,7 @@ function bindEvents(){
 	$('#search_form_holder').on("ajax:success",'#search_genres',getGenres)
 	$('#search_form_holder').on("ajax:error",'#search_genres',failedResponse)
 	$('#search_results').on('click', '.beer_search_button', getBeers)
-  $('body').on('click',overlay)
+  $('').on('click',overlay)
 }
 
 function getGenres(e, data, status, xhr){
