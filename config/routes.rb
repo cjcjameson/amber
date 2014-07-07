@@ -9,6 +9,8 @@ Amber::Application.routes.draw do
   match 'sessions/new' => 'sessions#new'
   match 'sessions/create' => 'sessions#create'
   match 'sessions/exit' => 'sessions#exit'
+
+  match 'search' => 'search#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
