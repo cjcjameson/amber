@@ -3,22 +3,15 @@ $(document).ready(function(){
 })
 
 function bindEvents(){
-	$('#search_form').on('submit', '#search_genres', getGenres)
-	$('#search_results').on('click', '.beer_search', getBeers)
+	$('#search_form').on("ajax:success",'#search_genres',getGenres)
+	$('#search_form').on("ajax:error",'#search_genres',failedResponse)
 }
 
-function getGenres(){
-	event.preventDefault()
-	var getData = $(this).serializeArray();
-	$.ajax({
-		url: 'beer_genres/search',
-		method: 'GET',
-		data: getData,
-		dataType: 'json'
-	}).success(displayGenreMatches)
-		.fail(function(){
-		console.log("boo!")
-	})
+function getGenres(e, data, status, xhr){
+	displayGenreMatches(data)
+}
+function failedResponse(){
+	console.log("Something went wrong!")
 }
 
 function getBeers(){

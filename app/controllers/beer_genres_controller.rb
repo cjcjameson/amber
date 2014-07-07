@@ -19,7 +19,7 @@ class BeerGenresController < ApplicationController
 		@beer_genres = result.map{ |genre_arr| genre_arr.first } 
 		
 		respond_to do |format|
-      format.html
+      # format.html
       format.json { render :json => @beer_genres.to_json }
     end
 
