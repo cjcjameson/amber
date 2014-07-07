@@ -1,181 +1,202 @@
+/*>>>>>>>>>>>>>>> main document stylings <<<<<<<<<<<<<<<*/
 body, html {
     margin: 0;
     padding: 0;
 }
-@font-face {
-    font-family: 'mojito';
-    src: url('/assets/fonts/mojito.ttf');
+html {
+    background-image:url("beerfoam.png");
+    background-size: cover;                    
+    background-repeat: no-repeat;
+}
+body{
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
+@font-face {
+  font-family: "mojito";
+  src: url(/assets/mojito.ttf);
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+/*>>>>>>>>>>>>>>> generic class stylings <<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 .centered_text {
     text-align: center;
-}
-.float_right {
-    float: right;
-}
-.clear_floats {
-    clear: both;
-}
-.right_margin_buffer {
-    margin-right: 50px;
 }
 
 .centered_block {
     margin: 0 auto;
 }
-#flavor_table {
-    width: 80%;
+
+.float_right {
+    float: right;
 }
-#top_nav li{
-    display: inline;
+
+.clear_floats {
+    clear: both;
 }
-#top_nav form {
-    display: inline;
+
+.right_margin_buffer {
+    margin-right: 50px;
+}
+
+.small_side_margins {
+    margin: 0px 8px;
 }
 
 .clear_margins {
     margin: 0px;
 }
 
-#separator {
-    height: 12px;
-    border: 0;
-    margin-top: 0px;
-    box-shadow: inset 0 12px 12px -12px rgba(173,140,7,0.5);
-    width: 450px;
-}
-
-#search_form_holder {
-    width: 550px;
-}
-
-#find_genre_submit {
-    width: 100%;
-}
-
-
-.main_logo{
-    /*font-family: 'mojito';*/
-	font-size: 4em;
-    margin: 0px;
-}
-#search_results{
-    width: 60%;
-    margin: 0 auto;
-	text-align: center;
-
-}
-#food_flavor_id{
-	border:1px solid #777;
-    padding: 5px;
-    color: #999;
-    background: #fff;
-    border-radius: 5px;
-}
-
-/*this is gradient code for button below*/
-.genre_search_form input{
-	 border:1px solid #777;
-    padding: 4px 10px;
-    color: #fff;
-    cursor: pointer;
-    background: #428ec9;
-    border-radius: 5px;
-     
-/* Webkit */
-    background: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(#99c9e5),
-        to(#428ec9)
-        );
-    -webkit-border-radius: 5px;
-    -webkit-box-shadow: 1px 1px 1px #fff;
-         
-/* Firefox */
-    background: -moz-linear-gradient(
-        top,
-        #99c9e5,
-        #428ec9
-        );
-    -moz-border-radius: 5px;
-    -moz-box-shadow: 1px 1px 1px #fff;
-     
-/* IE */
-    filter:progid:DXImageTransform.Microsoft.gradient
-        (startColorstr=#ff99c9e5,endColorstr=#ff428ec9);
-    zoom: 1;
-}
-
-/*header{
-	margin-top:16%;
-}*/
-
-.bg_img{
-	background-image:url("beer_bg.jpg");
-	background-size:   cover;                    
-  background-repeat: no-repeat;
-	opacity: 0.8;
-	background-repeat:no-repeat;
-	top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;   
-}
-
-/*body{
-	font-family: 'Lancelot', cursive;
-}*/
-
-
-
 .hidden {
     display: none
-}
-
-.genre_description {
-    color: white;
-    margin-top: 2%;
-    background-color: #B88907;
-    width: 200px;
-    height: 280px;
-    float: left;
-    margin-right:10px; 
-}
-#search_results{
-    position:relative;
-    width: 100%;
-    height: 350px;
-}
-.beer_list{
-    list-style: none;
-    text-align: center;
-    background-color: white;
-    color: #B88907;
-}
-#beer_template{
-    position: relative;
-    margin-top: 0;
-    margin-left: 0; 
-    padding-left: 0; 
-    width: 100%;
-    height:500px;
-    font-size: 30px;
 }
 
 .relative{
     position: relative;
 }
-.beer_search{
-    bottom:5px;
-    right:23%;  
-}
+
 .absolute{
     position: absolute;
 }
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+
+/*>>>>>>>>>>>>>>>>> User navigation bar <<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+#top_nav li{
+    display: inline;
+}
+#top_nav form {
+    display: inline;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+
+/*>>>>>>>>>>>>>>>>>>> 'Logo' and info <<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+.main_logo{
+    font-family: 'mojito';
+    font-size: 4em;
+    margin: 0px;
+}
+
+/*horizontal rule under app name*/
+#separator {
+    height: 12px;
+    border: 0;
+    margin-top: 0px;
+    box-shadow: inset 0 12px 12px -12px rgba(173,140,7,0.5);
+    box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+    width: 450px;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+/*>>>>>>> genre matche search based on user input <<<<<<<*/
+/*holds the flavor profiles table*/
+#search_form_holder {
+    width: 550px;
+}
+
+#flavor_table {
+    width: 80%;
+}
+
+#find_genre_submit {
+    width: 100%;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*search viewport works in conjunction with search results
+this styling allows search results to be positioned relative
+and allow it to strech to the bottom of the page*/
+#search_viewport {
+    height: 55%;
+}
+
+#search_viewport:before {
+    content: '';
+    float: left;
+    height: 100%;
+}
+
+/*>>>>>   div that holds the results of searches  <<<<<*/
+#search_results{
+    opacity: 0.8;
+    background-color: #FFE066;
+    position: relative;
+    top: 5px;
+}
+#search_results:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+
+/*>>>>>>>>>>>>>>>> genre search result <<<<<<<<<<<<<<<<*/
+#genre_results{
+    width: 880px;
+    margin: 0 auto;
+}
+
+/*div that gets appended via JS
+holds info about each genre match*/
+.genre_description {
+    color: white;
+    border: 1px solid black;
+    margin-top: 2%;
+    background-color: #B88907;
+    width: 208px;
+    height: 290px;
+    float: left;
+    margin-right:10px; 
+}
+/*button to send request to search for beers of a specific genre*/
+.beer_search_button{
+    bottom:5px;
+    right:23%;  
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+
+
+/*>>>>>>>>>>>>>>>>>>>> beer search <<<<<<<<<<<<<<<<<<<<*/
+.sample_beer {
+    border: 1px solid black;
+    margin: 0px;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
 
 .error_messages {
     border: 2px red solid;
