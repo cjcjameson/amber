@@ -1,4 +1,4 @@
-<%= form_tag("beer_genres/search", method: "get", id: "search_genres") do %>
+<%= form_tag("beer_genres/search", method: "get", id: "search_genres", remote: true) do %>
 	<% @flavors.each do |flavor| %>
 		<%= check_box_tag("flavor#{flavor.id}", flavor.name) %>
 		<%= label_tag(flavor.name, flavor.name)%>
