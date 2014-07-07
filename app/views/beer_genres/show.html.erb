@@ -1,6 +1,8 @@
 <ul>
 <% @beers.each do |b| %>
-<li><%= b.name %><br>
+<li>
+<img src=<%= b.icon_url %>><br>
+<%= b.name %><br>
 <%= b.description %>
 </li>
 <% end %>
