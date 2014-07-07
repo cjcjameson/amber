@@ -1,8 +1,18 @@
-<ul>
-<% @beer_genres.each do |g| %>
-<li><%= g.name %><br>
-<%= g.description %><br>
-<%= button_to "browse beers","/beer_genres/#{g.id}/beers", :method => "get"%>
-</li>
-<%end%>	
-</ul>
+<div id="overlay">
+  <div class="modal">
+  	<p>yay</p>
+  </div>
+  
+  <div class="main_genres">
+		<ul>
+		<% @beer_genres.each do |g| %>
+		<li><%= g.name %><br>
+		<%= g.description %><br>
+		<%= button_to "browse beers","/beer_genres/#{g.id}/beers", :method => "get"%>
+		</li>
+		<%end%>	
+		</ul>
+	</div>
+
+
+</div>

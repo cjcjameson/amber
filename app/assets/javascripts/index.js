@@ -1,11 +1,12 @@
 $(document).ready(function(){
-	bindEvents()
+	bindEvents();
 })
 
 function bindEvents(){
 	$('#search_form_holder').on("ajax:success",'#search_genres',getGenres)
 	$('#search_form_holder').on("ajax:error",'#search_genres',failedResponse)
 	$('#search_results').on('click', '.beer_search_button', getBeers)
+  $('body').on('click',overlay)
 }
 
 function getGenres(e, data, status, xhr){
@@ -62,4 +63,10 @@ function displayBeers(data){
 		$('#beer_results').append(sampleBeer)
 
 	}
+
+
+}
+function overlay() {
+	debugger
+	$('#overlay').toggleClass('modal_show')
 }
