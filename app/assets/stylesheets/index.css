@@ -16,6 +16,11 @@ body{
     height: 100%;
     position: absolute;
 }
+
+@font-face {
+  font-family: "mojito";
+  src: url(/assets/mojito.ttf);
+}
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
@@ -85,6 +90,7 @@ body{
 /*>>>>>>>>>>>>>>>>>>> 'Logo' and info <<<<<<<<<<<<<<<<<<<*/
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 .main_logo{
+    font-family: 'mojito';
     font-size: 4em;
     margin: 0px;
 }
@@ -140,7 +146,7 @@ and allow it to strech to the bottom of the page*/
 #search_results{
     background-color: #FFE066;
     position: relative;
-    top: -5px;
+    top: 5px;
 }
 #search_results:after {
     content: '';
