@@ -47,7 +47,7 @@ function displayGenreMatches(matchArray){
 		genre.addClass(''+name+'')
 		genre.append("<h4>"+name+"</h4>")
 		genre.append('<p>'+description+'</p>')
-		genre.append("<button id='"+name+"' class='beer_search'>Get Suggestions!</button>")
+		genre.append("<button id='"+name+"' class='beer_search absolute'>Get Suggestions!</button>")
 		$('#search_results').append(genre)
 	}
 }
