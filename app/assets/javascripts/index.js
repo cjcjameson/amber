@@ -84,6 +84,11 @@ function initialize() {
             map: map,
             position: results[0].geometry.location
         });
+        google.maps.event.addEventListener(marker, 'click', function(){
+        	infoWindow.open(map, marker)
+        });
+        var infoWindow = new google.maps.InfoWindow(){}
+
       } else {
         console.log("Geocode was not successful for the following reason: " + status);
       }

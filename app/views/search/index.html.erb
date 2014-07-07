@@ -1,6 +1,7 @@
 <%= form_tag("/search/result", method: "post") do %>
 <ul>
-  <li><%= text_field_tag(:zipcode) %></li>
+  <li>zipcode: <%= text_field_tag(:zipcode) %></li>
+  <li>search term: <%= text_field_tag(:search_term) %></li>
   <li><%= submit_tag("search") %></li>
 </ul>
 <% end %>
