@@ -25,5 +25,9 @@ class BeerGenresController < ApplicationController
 
 	end
 
+	def show
+		@beer_genres = BeerGenre.all
+	end
+
 
 end
