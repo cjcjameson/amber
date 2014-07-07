@@ -1,3 +1,4 @@
+/*>>>>>>>>>>>>>>> main document stylings <<<<<<<<<<<<<<<*/
 body, html {
     margin: 0;
     padding: 0;
@@ -15,42 +16,80 @@ body{
     height: 100%;
     position: absolute;
 }
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
-@font-face {
-    font-family: 'mojito';
-    src: url('/assets/fonts/mojito.ttf');
-}
 
+
+/*>>>>>>>>>>>>>>> generic class stylings <<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 .centered_text {
     text-align: center;
-}
-.float_right {
-    float: right;
-}
-.clear_floats {
-    clear: both;
-}
-.right_margin_buffer {
-    margin-right: 50px;
 }
 
 .centered_block {
     margin: 0 auto;
 }
-#flavor_table {
-    width: 80%;
+
+.float_right {
+    float: right;
 }
-#top_nav li{
-    display: inline;
+
+.clear_floats {
+    clear: both;
 }
-#top_nav form {
-    display: inline;
+
+.right_margin_buffer {
+    margin-right: 50px;
+}
+
+.small_side_margins {
+    margin: 0px 8px;
 }
 
 .clear_margins {
     margin: 0px;
 }
 
+.hidden {
+    display: none
+}
+
+.relative{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+
+/*>>>>>>>>>>>>>>>>> User navigation bar <<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+#top_nav li{
+    display: inline;
+}
+#top_nav form {
+    display: inline;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+
+/*>>>>>>>>>>>>>>>>>>> 'Logo' and info <<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+.main_logo{
+    font-size: 4em;
+    margin: 0px;
+}
+
+/*horizontal rule under app name*/
 #separator {
     height: 12px;
     border: 0;
@@ -59,28 +98,36 @@ body{
     box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
     width: 450px;
 }
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
+
+
+/*>>>>>>> genre matche search based on user input <<<<<<<*/
+/*holds the flavor profiles table*/
 #search_form_holder {
     width: 550px;
+}
+
+#flavor_table {
+    width: 80%;
 }
 
 #find_genre_submit {
     width: 100%;
 }
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
-.main_logo{
-    /*font-family: 'mojito';*/
-    font-size: 4em;
-    margin: 0px;
-}
 
 
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 /*search viewport works in conjunction with search results
 this styling allows search results to be positioned relative
 and allow it to strech to the bottom of the page*/
 #search_viewport {
-    height: 100%;
+    height: 55%;
 }
 
 #search_viewport:before {
@@ -88,7 +135,8 @@ and allow it to strech to the bottom of the page*/
     float: left;
     height: 100%;
 }
-/***   div that holds the results of genre search   */
+
+/*>>>>>   div that holds the results of searches  <<<<<*/
 #search_results{
     background-color: #FFE066;
     position: relative;
@@ -100,31 +148,19 @@ and allow it to strech to the bottom of the page*/
     clear: both;
 }
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
 
+
+/*>>>>>>>>>>>>>>>> genre search result <<<<<<<<<<<<<<<<*/
 #genre_results{
     width: 880px;
     margin: 0 auto;
 }
 
-.small_side_margins {
-    margin: 0px 8px;
-}
-
-#food_flavor_id{
-    border:1px solid #777;
-    padding: 5px;
-    color: #999;
-    background: #fff;
-    border-radius: 5px;
-}
-
-.hidden {
-    display: none
-}
-
-
+/*div that gets appended via JS
+holds info about each genre match*/
 .genre_description {
     color: white;
     border: 1px solid black;
@@ -135,31 +171,28 @@ and allow it to strech to the bottom of the page*/
     float: left;
     margin-right:10px; 
 }
-
-.sample_beer {
-    border: 1px solid black;
-}
-
-#beer_template{
-    position: relative;
-    margin-top: 0;
-    margin-left: 0; 
-    padding-left: 0; 
-    width: 100%;
-    height:500px;
-    font-size: 30px;
-}
-
-.relative{
-    position: relative;
-}
-.beer_search{
+/*button to send request to search for beers of a specific genre*/
+.beer_search_button{
     bottom:5px;
     right:23%;  
 }
-.absolute{
-    position: absolute;
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
+
+
+/*>>>>>>>>>>>>>>>>>>>> beer search <<<<<<<<<<<<<<<<<<<<*/
+.sample_beer {
+    border: 1px solid black;
+    margin: 0px;
 }
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
 
 .error_messages {
     border: 2px red solid;
