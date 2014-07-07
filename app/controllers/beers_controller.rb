@@ -10,6 +10,7 @@ class BeersController < ApplicationController
   end
 
   def show
-    respond_with Beer.find(params[:id])
+    @genre = BeerGenre.find(params[:id]).name
+    @beers = Beer.where('category = ?', @genre)
   end
 end
