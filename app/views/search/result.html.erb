@@ -1,7 +1,12 @@
+<p><%= @latitude %></p>
+<p><%= @longitude %></p>
 <% @response_data.each do |response| %>
   <img src="<%= response["image_url"] %>">
   <p><a href="<%= response["url"] %>"><%= response["name"] %></a></p>
   <p><%= response["display_phone"] %></p>
   <p><%= response["location"]["display_address"] %></p>
-
+  <% if response["location"]["coordinate"] %>
+    <p><%= response["location"]["coordinate"]["latitude"] %></p>
+    <p><%= response["location"]["coordinate"]["longitude"] %></p>
+  <% end %>
 <% end %>

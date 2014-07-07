@@ -13,6 +13,8 @@ access_token = OAuth::AccessToken.new(consumer, token, token_secret)
 
     path = "/v2/search?term=beer+stores&location=#{params[:zipcode]}"
     response = JSON.parse(access_token.get(path).body)
+    @latitude = response["region"]["center"]["latitude"]
+    @longitude = response["region"]["center"]["longitude"]
     @response_data = response["businesses"]
     render "result"
   end
