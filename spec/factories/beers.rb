@@ -1,6 +1,10 @@
 FactoryGirl.define do
   factory :beer do
-
-  	#sub-factory for non-flavor
+  	name "Coors"
+  	abv 3.4
+  	available "Y"
+  	category "Lager"
+  	style "American Water-Beer"
+  	description "Rocky mountain cold"  	
   end
 end
