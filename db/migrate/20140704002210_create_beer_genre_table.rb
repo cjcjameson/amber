@@ -1,7 +1,7 @@
 class CreateBeerGenreTable < ActiveRecord::Migration
   def up
   	create_table :beer_genres do |bg|
-  		bg.string :name
+  		bg.string :name, null: false
   		bg.timestamps
   	end
   end

@@ -14,20 +14,20 @@
 ActiveRecord::Schema.define(:version => 20140707224551) do
 
   create_table "beer_genres", :force => true do |t|
-    t.string   "name"
+    t.string   "name",        :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "description"
   end
 
   create_table "beers", :force => true do |t|
-    t.string   "name"
+    t.string   "name",        :null => false
+    t.string   "category",    :null => false
     t.string   "abv"
     t.string   "available"
-    t.string   "category"
     t.string   "style"
     t.text     "label_url"
-    t.text     "description"
+    t.text     "description", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(:version => 20140707224551) do
   end
 
   create_table "users", :force => true do |t|
-    t.string "username"
-    t.string "email"
+    t.string "username",        :null => false
+    t.string "email",           :null => false
     t.string "city"
-    t.string "password_digest"
-    t.string "zipcode"
+    t.string "password_digest", :null => false
+    t.string "zipcode",         :null => false
   end
 
 end
