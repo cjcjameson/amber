@@ -20,12 +20,14 @@ GenresController.prototype = {
 		$('#genre_results').append('<div id="beer_results" class="clear_floats">')
 	},
 	getGenres: function(e, data, status, xhr){
-		debugger
 		genresController.displayGenreMatches(data)
 		// to be refactored, consult steven
 	},
 	bindAjax: function(){
 		$('#search_form_holder').on("ajax:success",'#search_genres',this.getGenres)
-		$('#search_form_holder').on("ajax:error",'#search_genres',failedResponse)
+		$('#search_form_holder').on("ajax:error",'#search_genres',this.failedResponse)
+	},
+	failedResponse: function(){
+		console.log("Something went wrong!")
 	}
 }
