@@ -1,23 +1,23 @@
-function GenresController(){
-	// this.view = view;
+function GenresController(view){
+	this.view = view;
 	this.bindAjax()
 }
 
 GenresController.prototype = {
 	displayGenreMatches: function(matchArray){
-		$('#search_results').empty()
-		$('#search_results').append('<div id="genre_results"></div>')
+		this.view.empty($('#search_results'))
+		this.view.draw($('#search_results'),'<div id="genre_results"></div>')
+		that = this
 		for (var match = 0; match < matchArray.length; match ++){
 			var name = matchArray[match].name
 			var description = matchArray[match].description
 			var genre = $('#genre_template').children().clone()
-
-			genre.append("<h4 class='centered_text'>"+name+"</h4>")
-			genre.append('<p class="small_side_margins">'+description+'</p>')
-			genre.append("<button id='"+name+"' class='beer_search_button absolute'>Get Suggestions!</button>")
-			$('#genre_results').append(genre)
+			that.view.draw(genre,"<h4 class='centered_text'>"+name+"</h4>")
+			that.view.draw(genre,'<p class="small_side_margins">'+description+'</p>')
+			that.view.draw(genre,"<button id='"+name+"' class='beer_search_button absolute'>Get Suggestions!</button>")
+			that.view.draw($('#genre_results'), genre)
 		}
-		$('#genre_results').append('<div id="beer_results" class="clear_floats">')
+		this.view.draw($('#genre_results'),'<div id="beer_results" class="clear_floats">')
 	},
 	getGenres: function(e, data, status, xhr){
 		genresController.displayGenreMatches(data)

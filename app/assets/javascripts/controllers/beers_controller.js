@@ -1,5 +1,5 @@
-function BeersController(){
-	// this.view = view
+function BeersController(view){
+	this.view = view;
 	this.bindView()
 }
 BeersController.prototype = {
@@ -8,7 +8,7 @@ BeersController.prototype = {
 	},
 	getBeers: function(){
 		$.ajax({
-		url: 'beers/search',
+		url: '/beers/search',
 		method: 'GET',
 		data: {genre: event.target.id},
 		dataType: 'json'
@@ -18,20 +18,20 @@ BeersController.prototype = {
 	})
 	},
 	displayBeers: function(data){
-		$('#beer_results').empty();
-		var beers = data
-		for (var sample = 0; sample < beers.length; sample++){
+		that = beersController
+		that.view.empty($('#beer_results'))
+		for (var sample = 0; sample < data.length; sample++){
 			var sampleBeer = $('#beer_template').children().clone()
-			var name = beers[sample].name
-			var description = beers[sample].description
-			var abv = beers[sample].abv
-			var style = beers[sample].style
-			var imgUrl = beers[sample].label_url
-			sampleBeer.append("<h4>"+name+"</h4>")
-			sampleBeer.append("<h6>"+style+"</h6>")
-			sampleBeer.append("<p>"+description+"</p>")
-			sampleBeer.append("<img src='"+imgUrl+"'>")
-			$('#beer_results').append(sampleBeer)
+			var name = data[sample].name
+			var description = data[sample].description
+			var abv = data[sample].abv
+			var style = data[sample].style
+			var imgUrl = data[sample].label_url
+			that.view.draw(sampleBeer,"<h4>"+name+"</h4>")
+			that.view.draw(sampleBeer,"<h6>"+style+"</h6>")
+			that.view.draw(sampleBeer,"<p>"+description+"</p>")
+			that.view.draw(sampleBeer,"<img src='"+imgUrl+"'>")
+			that.view.draw($('#beer_results'),sampleBeer)
 		}
 	}
 
