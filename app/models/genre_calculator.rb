@@ -36,6 +36,4 @@ private
     top_four_genres.map{ |genre_array| genre_array.first }
   end
 
-
-
 end
