@@ -26,7 +26,7 @@ BeersController.prototype = {
 			var description = data[sample].description
 			var abv = data[sample].abv
 			var style = data[sample].style
-			var imgUrl = data[sample].label_url
+			var imgUrl = data[sample].label_url || "assets/amberlabel.png"
 			that.view.draw(sampleBeer,"<h4>"+name+"</h4>")
 			that.view.draw(sampleBeer,"<h6>"+style+"</h6>")
 			that.view.draw(sampleBeer,"<p>"+description+"</p>")
