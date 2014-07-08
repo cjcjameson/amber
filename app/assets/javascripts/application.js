@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
+//= require initialize.js
 //= require_tree .
+
