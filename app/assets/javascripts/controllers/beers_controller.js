@@ -8,7 +8,7 @@ BeersController.prototype = {
 	},
 	getBeers: function(){
 		$.ajax({
-		url: 'beers/search',
+		url: '/beers/search',
 		method: 'GET',
 		data: {genre: event.target.id},
 		dataType: 'json'
