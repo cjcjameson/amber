@@ -27,11 +27,11 @@ BeersController.prototype = {
 			var abv = data[sample].abv
 			var style = data[sample].style
 			var imgUrl = data[sample].label_url
-			sampleBeer.append("<h4>"+name+"</h4>")
-			sampleBeer.append("<h6>"+style+"</h6>")
-			sampleBeer.append("<p>"+description+"</p>")
-			sampleBeer.append("<img src='"+imgUrl+"'>")
-			$('#beer_results').append(sampleBeer)
+			that.view.draw(sampleBeer,"<h4>"+name+"</h4>")
+			that.view.draw(sampleBeer,"<h6>"+style+"</h6>")
+			that.view.draw(sampleBeer,"<p>"+description+"</p>")
+			that.view.draw(sampleBeer,"<img src='"+imgUrl+"'>")
+			that.view.draw($('#beer_results'),sampleBeer)
 		}
 	}
 
