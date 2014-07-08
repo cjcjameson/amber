@@ -1,6 +1,4 @@
 $(function(){
-	// genresController = new GenresController(new GenresView())
-	// beersController = new BeersController(new BeersView())
-	genresController = new GenresController();
-	beersController = new BeersController();
+	genresController = new GenresController(new View())
+	beersController = new BeersController(new View())
 })
