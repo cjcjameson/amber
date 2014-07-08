@@ -20,6 +20,6 @@ class GenreCalculator
     result = result[0,4]
     @beer_genres = result.map{ |genre_arr| genre_arr.first }
 
-    @beer_genres.to_json
+    @beer_genres
   end
 end
