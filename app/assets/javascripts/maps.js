@@ -2,7 +2,7 @@ var geocoder;
 var map;
 var infoWindow;
 
-function initialize() {
+function initializeMaps() {
   var lat = $('.lat').html();
   var lng = $('.lng').html();
   geocoder = new google.maps.Geocoder();
