@@ -5,18 +5,18 @@
 		<% if index % 4 == 0 %>
 			<tr>
 				<td>
-					<%= check_box_tag("flavor#{flavor.id}", flavor.name) %>
+					<%= check_box_tag("flavors[]", flavor.name, false, id: flavor.name) %>
 					<%= label_tag(flavor.name, flavor.name)%>
 				</td>
 		<% elsif index % 4 == 3 %>
 				<td>
-					<%= check_box_tag("flavor#{flavor.id}", flavor.name) %>
+					<%= check_box_tag("flavors[]", flavor.name, false, id: flavor.name) %>
 					<%= label_tag(flavor.name, flavor.name)%>
 				</td>
 			</tr>
 		<% else %>
 			<td>
-				<%= check_box_tag("flavor#{flavor.id}", flavor.name) %>
+				<%= check_box_tag("flavors[]", flavor.name, false, id: flavor.name) %>
 				<%= label_tag(flavor.name, flavor.name)%>
 			</td>
 		<% end %>
