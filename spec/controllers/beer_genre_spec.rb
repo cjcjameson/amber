@@ -4,7 +4,7 @@ describe BeerGenresController do
 	context "#search" do
 		before (:each) do
 			spicy = FoodFlavor.create(name: "spicy")
-			ipa = BeerGenre.create(name: "IPA")
+			ipa = BeerGenre.create(name: "IPA", description: "India Pale Ale (IPA) is a hoppy beer style within the broader category of pale ale.")
 			match = Match.create(food_flavor: spicy, beer_genre: ipa)
 		end
 
