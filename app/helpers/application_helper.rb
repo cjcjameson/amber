@@ -1,10 +1,5 @@
 module ApplicationHelper
   def logged_in?
-    if session[:id]
-      @user = User.find(session[:id])
-      true
-    else
-      false
-    end
+    session[:id] ?  @user = User.find(session[:id]) : false
   end
 end
