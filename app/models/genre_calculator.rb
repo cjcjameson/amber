@@ -7,7 +7,7 @@ class GenreCalculator
     flavors = retrieve_flavors(@flavors)
     matches = get_matches(flavors)
     genres = get_genres(matches)
-    sort_and_extract_genres(genres).to_json
+    sort_and_extract_genres(genres)
   end
 
 private
@@ -34,6 +34,7 @@ private
     sorted_genres = genres.sort_by{|k,v| v}.reverse
     top_four_genres = sorted_genres[0,4]
     top_four_genres.map{ |genre_array| genre_array.first }
+
   end
 
 end

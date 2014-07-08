@@ -1,0 +1,10 @@
+<div id="map-canvas" style="width: 500px; height: 450px;">
+</div>
+<p class="lat"><%= @latitude %></p>
+<p class="lng"><%= @longitude %></p>
+<% @response_data.each do |response| %>
+  <img src="<%= response["image_url"] %>">
+  <p><a href="<%= response["url"] %>"><%= response["name"] %></a></p>
+  <p><%= response["display_phone"] %></p>
+  <p class="address"><%= response["location"]["display_address"].join(", ") %></p>
+<% end %>

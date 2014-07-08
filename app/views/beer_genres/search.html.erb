@@ -1,0 +1,17 @@
+<div id="search_viewport">
+  <div id="search_results">
+    <% @best_match_genres.each do |genre| %>
+      <div class="genre" id="<%= genre.id %>">
+        <h4><%= genre.name %></h4>
+        <p><%= genre.description %></p>
+        <%= button_to "Get Suggestions!", {action: "search", controller: "beers"}, class: "beer_search_button",id: genre.name, "data-id" => genre.id , remote: true %>
+        <%= button_to "Find Locations!", {action: "index", controller: "location_lookup"}, form_class: "" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="beer_template" class="hidden">
+  <div class="sample_beer"></div>
+</div>
+<div id="beer_results"></div>
