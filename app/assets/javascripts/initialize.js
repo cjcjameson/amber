@@ -1,5 +1,6 @@
 $(function(){
-	genresController = new GenresController();
-  beersController = new BeersController();
+  genresController = new GenresController(new View())
+  beersController = new BeersController(new View())
   initializeMaps();
+
 })

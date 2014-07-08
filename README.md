@@ -1,7 +1,7 @@
 Amber
 =====
 
-amber-brew.herokuapp.com
+[amber-brew.herokuapp.com](http://amber-brew.herokuapp.com) -- NOW LIVE!!
 
 Beer pairings for the aficionado
 
