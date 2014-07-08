@@ -16,7 +16,7 @@ class Seed
       {name: "Porter", description: "Roasted flavor complemented by nutty and toffee characteristics. Works well with smoked meats, especially bacon; complements chocolate, espresso and coffee-flavored desserts and soft, creamy cheeses."},
       {name: "Abbey Dubbel", description: "The Belgian Dubbel is a rich malty beer with some spicy / phenolic and mild alcoholic characteristics. This category is great for aged cheeses and roasted foods. Specifically, roasted beef, lamb, salmon, and pork are all good choices."},
       {name: "Abbey Tripel", description: "Tripels love basil. You're good to go with anything pesto. Tripels also have enough sweetness to balance strong bitter flavors. The higher alcohol content may make this a poor choice for anything on the spicy side"},
-      {name: "Hefewiezen", description: "Unfiltered with unique clove and banana aromas. Classically paired with weisswurst. Contrasts with pungent, intense aromatics such as mustard flavors, pickles, horseradish and cured meats."},
+      {name: "Hefeweizen", description: "Unfiltered with unique clove and banana aromas. Classically paired with weisswurst. Contrasts with pungent, intense aromatics such as mustard flavors, pickles, horseradish and cured meats."},
       {name: "Witbier", description: "Unfiltered with orange, citrus and coriander aromas. Complements salads with light citrus dressings and feta or goat cheese as well as ceviches and other light, citrus-flavored dishes."},
       {name: "American Wheat", description: "Very refreshing, slightly tart flavor with subtle citrus aroma. Complements the lighter elements of foods like seared scallops and oil-cooked garlic shrimp, while adding a refreshing flavor contrast."},
       {name: "Barley Wine", description: "Strong natural sweetness with a slight hoppy bitterness. Strength of flavor often overpowers main dishes; better suited as a complement with strong cheeses or rich, sweet chocolate and caramel desserts. Try with a strong risotto!"}
@@ -24,28 +24,6 @@ class Seed
 
     beer_genres.each do |genre|
       BeerGenre.create(genre)
-    end
-  end
-
-  def self.beers_fake
-    names = [".38 Special", "100 Barrel Series #31", "13 Rebels",
-     "1327 Pod", "Red Mullet Ale", "Stone Jail 13",
-      "Ziegenbock Amber", "Yosemite Scooter", "Wupper Hell",
-      "Wusele Weizen", "Belmont Station 15th Anniversary Ale",
-      "Below Decks", "Cello Stout", "Celt's Golden Ale", 
-      "Celtic Ale", "Eighty Shilling Export Ale", "Eighty-Four",
-      "Eighty-Shilling Scottish Ale (80/-)", "Einbecker Alster",
-      "Einbecker Brauherren Alkoholfrei"]
-    categories = ["Bitter", "Pilsner", "Porter",
-     "Cream Ale / Blonde Ale"]
-    styles = ["Ordinary Bitter", "German-Style Pilsener",
-     "Brown Porter", "Golden or Blonde Ale"]
-    abv = [3.8, 5.8, 5.2, 5.6]
-    available = ["Year Round", "Seasonal"]
-    label_url = "https://s3.amazonaws.com/brewerydbapi/beer/Pgm9vR/upload_Ik6qO2-medium.png"
-    description = "It's good!"
-    names.each_with_index do |name, index|
-      Beer.create(name: name, abv: abv[index % 4], available: available[index % 2], category: categories[index % 4], style: styles[index % 4], label_url: label_url, description: description)
     end
   end
 
@@ -168,9 +146,108 @@ class Seed
     end
   end
 
+
+
+
+  def self.beers
+
+    for i in 1..583
+      puts i
+      result = HTTParty.get("http://api.brewerydb.com/v2/beers/?key=#{CONFIG['brewerydb']['key']}&p=#{i}&status=verified&format=json")
+      parsed_results = JSON.parse(result.to_json)["data"]
+      parsed_results.each do |result|
+        if result["status"] == "verified"
+          new_beer = Beer.new(name: result["name"],
+           description: result["description"],
+           abv: result["abv"])
+
+          if result["available"]
+            new_beer.available = result["available"]["name"]
+          end
+
+          if result["labels"]
+            new_beer.label_url = result["labels"]["medium"]
+          end
+
+          if result["style"]
+
+            new_beer.style = result["style"]["name"]
+
+            case new_beer.style
+            when "American-Style Cream Ale or Lager", "Golden or Blonde Ale", "Belgian-Style Blonde Ale"
+              new_beer.category = "Cream Ale / Blonde Ale"
+            when "Ordinary Bitter", "Special Bitter or Best Bitter", "Extra Special Bitter"
+              new_beer.category = "Bitter"
+            when "Classic English-Style Pale Ale", "American-Style Pale Ale", "American-Style Strong Pale Ale", "Belgian-Style Pale Ale", "International-Style Pale Ale", "Australasian-Style Pale Ale"
+              new_beer.category = "Pale Ale"
+            when "English-Style India Pale Ale", "American-Style India Pale Ale"
+              new_beer.category = "IPA"
+            when "Imperial or Double India Pale Ale"
+              new_beer.category = "Double IPA"
+            when "American-Style Amber/Red Ale", "Irish-Style Red Ale"
+              new_beer.category = "Amber Ale / Red Ale"
+            when "Scotch Ale"
+              new_beer.category = "Scotch Ale"
+            when "English-Style Brown Ale", "American-Style Brown Ale", "German-Style Brown Ale / Düsseldorf-Style Altbier"
+              new_beer.category = "Brown Ale / Altbier"
+            when "Belgian-Style Dubbel"
+              new_beer.category = "Abbey Dubbel"
+            when "Belgian-Style Tripel"
+              new_beer.category = "Abbey Tripel"
+            when "Old Ale", "Strong Ale Belgian-Style Pale Strong Ale", "Belgian-Style Dark Strong Ale"
+              new_beer.category = "Old Ale / Strong Ale"
+            when "British-Style Barley Wine Ale", "American-Style Barley Wine Ale"
+              new_beer.category = "Barley Wine"
+            when "Brown Porter", "Robust Porter", "Smoke Porter", "Baltic-Style Porter", "American-Style Imperial Porter"
+              new_beer.category = "Porter"
+            when "Classic Irish-Style Dry Stout"
+              new_beer.category = "Dry Stout"
+            when "Oatmeal Stout", "Sweet or Cream Stout"
+              new_beer.category = "Oatmeal Stout"
+            when "British-Style Imperial Stout", "American-Style Imperial Stout"
+              new_beer.category = "Imperial Stout"
+            when "South German-Style Hefeweizen / Hefeweissbier"
+              new_beer.category = "Hefeweizen"
+            when "Light American Wheat Ale or Lager with Yeast", "Light American Wheat Ale or Lager without Yeast"
+              new_beer.category = "American Wheat"
+            when "Belgian-Style White (or Wit) / Belgian-Style Wheat"
+              new_beer.category = "Witbier"
+            when "South German-Style Dunkel Weizen / Dunkel Weissbier", "Bamberg-Style Weiss (Smoke) Rauchbier (Dunkel or Helles)"
+              new_beer.category = "Dunkelweizen"
+            when "South German-Style Weizenbock / Weissbock"
+              new_beer.category = "Weizenbock"
+            when "German-Style Pilsener", "Bohemian-Style Pilsener", "American-Style Pilsener", "International-Style Pilsener"
+              new_beer.category = "Pilsener"
+            when "Münchner (Munich)-Style Helles", "Bamberg-Style Helles Rauchbier", "Dortmunder / European-Style Export"
+              new_beer.category = "Helles / Dortmuner"
+            when "Vienna-Style Lager"
+              new_beer.category = "Vienna"
+            when "American-Style Amber Lager"
+              new_beer.category = "Amber Lager"
+            when "American-Style Dark Lager"
+              new_beer.category = "Dark Lager"
+            when "German-Style Heller Bock/Maibock"
+              new_beer.category = "Maibock"
+            when "German-Style Doppelbock"
+              new_beer.category = "Doppelbock"
+            when "French & Belgian-Style Saison"
+              new_beer.category = "Saison"
+            when "Belgian-Style Lambic", "Belgian-Style Gueuze Lambic"
+              new_beer.category = "Lambic"
+            else 
+              new_beer.category = result["style"]["category"]["name"]
+            end
+          end
+        end
+        
+        new_beer.save unless Beer.find_by_name(new_beer.name)
+
+      end
+    end
+  end
 end
 
 Seed.genres
 Seed.flavors
-Seed.beers_fake
+Seed.beers
 Seed.matches

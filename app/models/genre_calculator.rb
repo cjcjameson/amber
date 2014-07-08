@@ -4,22 +4,37 @@ class GenreCalculator
   end
 
   def get_best_genre_matches
-
-    raw_genre_list = @flavors.map do |flavor|
-      FoodFlavor.find_by_name(flavor).beer_genres
-    end
-
-    raw_genre_list.flatten!
-
-    genre_scores = raw_genre_list.inject({}) do |hash, genre|
-      hash[genre] ? hash[genre] += 1 : hash[genre] = 1
-      hash
-    end
-
-    result = genre_scores.sort_by{|k,v| v}.reverse #=> this gives you the nested array. [[name: count],[name:count]]
-    result = result[0,4]
-    @beer_genres = result.map{ |genre_arr| genre_arr.first }
-
-    @beer_genres
+    flavors = retrieve_flavors(@flavors)
+    matches = get_matches(flavors)
+    genres = get_genres(matches)
+    sort_and_extract_genres(genres)
   end
+
+private
+
+  def retrieve_flavors(flavors)
+    flavors.flat_map { |flavor| FoodFlavor.where('name = ?', flavor) }
+  end
+
+  def get_matches(flavors)
+    flavors.flat_map { |flavor| flavor.matches }
+  end
+
+  def get_genres(matches)
+    genres = matches.map do |match|
+      { genre: BeerGenre.find(match.beer_genre_id), intensity: match.intensity }
+    end
+    genres.inject({}) do |result, match|
+      result[match[:genre]] ? result[match[:genre]] += match[:intensity] : result[match[:genre]] = match[:intensity]
+      result
+    end
+  end
+
+  def sort_and_extract_genres(genres)
+    sorted_genres = genres.sort_by{|k,v| v}.reverse
+    top_four_genres = sorted_genres[0,4]
+    top_four_genres.map{ |genre_array| genre_array.first }
+
+  end
+
 end
