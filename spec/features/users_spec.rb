@@ -7,7 +7,7 @@ feature 'users' do
       fill_in 'user_username', :with => "allison"
       fill_in 'user_email', :with => "allison@example.com"
       fill_in 'user_city', :with => "San Francisco"
-      fill_in 'user_zipcode', :with => "zipcode"
+      fill_in 'user_zipcode', :with => "94720"
       fill_in 'user_password', :with => "allison"
       fill_in 'user_password_confirmation', :with => "allison"
       click_button "Create"
