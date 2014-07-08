@@ -26,6 +26,10 @@ gem 'ember-rails'
 gem 'ember-source', '1.5.0'
 gem 'jquery-rails'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'rspec-rails', '=2.14'
   gem 'jasmine'
