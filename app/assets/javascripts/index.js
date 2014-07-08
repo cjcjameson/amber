@@ -3,15 +3,10 @@ $(document).ready(function(){
 })
 
 function bindEvents(){
-	$('#search_form_holder').on("ajax:success",'#search_genres',getGenres)
-	$('#search_form_holder').on("ajax:error",'#search_genres',failedResponse)
 	$('#search_results').on('click', '.beer_search_button', getBeers)
   $('.beer_modal_show').on('click',overlay)
 }
 
-function getGenres(e, data, status, xhr){
-	displayGenreMatches(data)
-}
 function failedResponse(){
 	console.log("Something went wrong!")
 }
@@ -26,22 +21,6 @@ function getBeers(){
 		.fail(function(){
 		console.log("boo!")
 	})
-}
-
-function displayGenreMatches(matchArray){
-	$('#search_results').empty()
-	$('#search_results').append('<div id="genre_results"></div>')
-	for (var match = 0; match < matchArray.length; match ++){
-		var name = matchArray[match].name
-		var description = matchArray[match].description
-		var genre = $('#genre_template').children().clone()
-
-		genre.append("<h4 class='centered_text'>"+name+"</h4>")
-		genre.append('<p class="small_side_margins">'+description+'</p>')
-		genre.append("<button id='"+name+"' class='beer_search_button absolute'>Get Suggestions!</button>")
-		$('#genre_results').append(genre)
-	}
-	$('#genre_results').append('<div id="beer_results" class="clear_floats">')
 }
 
 
