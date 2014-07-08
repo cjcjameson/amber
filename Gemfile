@@ -26,6 +26,10 @@ gem 'ember-rails'
 gem 'ember-source', '1.5.0'
 gem 'jquery-rails'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'rspec-rails', '=2.14'
   gem 'jasmine'
@@ -41,6 +45,7 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+ruby '2.0.0'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
