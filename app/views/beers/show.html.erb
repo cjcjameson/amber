@@ -1,9 +1,9 @@
 <ul>
-<% @beers.each do |b| %>
-<li>
-<img src=<%= b.icon_url %>><br>
-<%= b.name %><br>
-<%= b.description %>
-</li>
-<% end %>
+	<% @beers.each do |b| %>
+		<li>
+			<img src=<%= b.label_url %>><br>
+			<%= b.name %><br>
+			<%= b.description %>
+		</li>
+	<% end %>
 </ul>
