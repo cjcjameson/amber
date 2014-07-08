@@ -4,23 +4,15 @@
   <title>Amber</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD1vH1P_r1rkvu8IR36I41Rr_KuLPKZMg">
+    </script>
   <%= csrf_meta_tags %>
 </head>
 
 <body>
+  <%= render partial: "/home/nav" %>
 
-	<div id="top_wrapper">
-		<%= render partial: "/home/nav" %>
-
-		<%= button_to "browse beer genres","/beer_genres", :method => "get" %>
-		<h1 class="main_logo centered_text clear_floats"> Amber </h1>
-		<h2 class="clear_margins centered_text">Select some flavor profiles to get started!</h2>
-		<hr id="separator"/>
-
-		<div id="search_form_holder" class="centered_block">
-			<%= render partial: "/beer_genres/search" %>
-		</div>
-	</div>
 
 <%= yield %>
 

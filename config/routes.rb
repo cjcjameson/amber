@@ -12,4 +12,7 @@ Amber::Application.routes.draw do
   match 'sessions/new' => 'sessions#new'
   match 'sessions/create' => 'sessions#create'
   match 'sessions/exit' => 'sessions#exit'
+
+  match 'location_lookup' => 'location_lookup#index'
+  match 'location_lookup/result' => 'location_lookup#result'
 end
