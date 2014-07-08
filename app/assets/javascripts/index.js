@@ -6,7 +6,7 @@ function bindEvents(){
 	$('#search_form_holder').on("ajax:success",'#search_genres',getGenres)
 	$('#search_form_holder').on("ajax:error",'#search_genres',failedResponse)
 	$('#search_results').on('click', '.beer_search_button', getBeers)
-  $('').on('click',overlay)
+  $('.beer_modal_show').on('click',overlay)
 }
 
 function getGenres(e, data, status, xhr){
@@ -17,7 +17,6 @@ function failedResponse(){
 }
 
 function getBeers(){
-	debugger;
 	$.ajax({
 		url: 'beers/search',
 		method: 'GET',
@@ -47,8 +46,9 @@ function displayGenreMatches(matchArray){
 
 
 function displayBeers(data){
+	debugger
 	$('#beer_results').empty();
-	var beers = data.beers
+	var beers = data
 	
 	for (var sample = 0; sample < beers.length; sample++){
 		var sampleBeer = $('#beer_template').children().clone()
@@ -56,7 +56,7 @@ function displayBeers(data){
 		var description = beers[sample].description
 		var abv = beers[sample].abv
 		var style = beers[sample].style
-		var imgUrl = beers[sample].icon_url
+		var imgUrl = beers[sample].label_url
 		sampleBeer.append("<h4>"+name+"</h4>")
 		sampleBeer.append("<h6>"+style+"</h6>")
 		sampleBeer.append("<p>"+description+"</p>")
