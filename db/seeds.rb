@@ -146,105 +146,108 @@ class Seed
     end
   end
 
+  def self.get_beer_data(page_number)
+    HTTParty.get("http://api.brewerydb.com/v2/beers/?key=#{CONFIG['brewerydb']['key']}&p=#{page_number}&status=verified&format=json")
+  end
 
+  def self.parse_beer_data(data)
+    JSON.parse(data.to_json)["data"]
+  end
+
+  def self.create_beer_objects(beers)
+    beers.each do |beer|
+      beer["status"] == "verified" ? new_beer = Beer.new : next
+
+      new_beer.name = beer["name"]
+      new_beer.description = beer["description"]
+      new_beer.abv = beer["abv"]
+      new_beer.available = beer["available"]["name"] if beer["available"]
+      new_beer.label_url = beer["labels"]["medium"] if beer["labels"]
+
+      new_beer.style = beer["style"]["name"] if beer["style"]
+
+      new_beer = set_beer_category(new_beer, beer["style"]["category"]["name"]) if new_beer.style
+      new_beer.save
+    end
+  end
+
+  def self.set_beer_category(beer, default_style)
+    case beer.style
+    when "American-Style Cream Ale or Lager", "Golden or Blonde Ale", "Belgian-Style Blonde Ale"
+      beer.category = "Cream Ale / Blonde Ale"
+    when "Ordinary Bitter", "Special Bitter or Best Bitter", "Extra Special Bitter"
+      beer.category = "Bitter"
+    when "Classic English-Style Pale Ale", "American-Style Pale Ale", "American-Style Strong Pale Ale", "Belgian-Style Pale Ale", "International-Style Pale Ale", "Australasian-Style Pale Ale"
+      beer.category = "Pale Ale"
+    when "English-Style India Pale Ale", "American-Style India Pale Ale"
+      beer.category = "IPA"
+    when "Imperial or Double India Pale Ale"
+      beer.category = "Double IPA"
+    when "American-Style Amber/Red Ale", "Irish-Style Red Ale"
+      beer.category = "Amber Ale / Red Ale"
+    when "Scotch Ale"
+      beer.category = "Scotch Ale"
+    when "English-Style Brown Ale", "American-Style Brown Ale", "German-Style Brown Ale / Düsseldorf-Style Altbier"
+      beer.category = "Brown Ale / Altbier"
+    when "Belgian-Style Dubbel"
+      beer.category = "Abbey Dubbel"
+    when "Belgian-Style Tripel"
+      beer.category = "Abbey Tripel"
+    when "Old Ale", "Strong Ale Belgian-Style Pale Strong Ale", "Belgian-Style Dark Strong Ale"
+      beer.category = "Old Ale / Strong Ale"
+    when "British-Style Barley Wine Ale", "American-Style Barley Wine Ale"
+      beer.category = "Barley Wine"
+    when "Brown Porter", "Robust Porter", "Smoke Porter", "Baltic-Style Porter", "American-Style Imperial Porter"
+      beer.category = "Porter"
+    when "Classic Irish-Style Dry Stout"
+      beer.category = "Dry Stout"
+    when "Oatmeal Stout", "Sweet or Cream Stout"
+      beer.category = "Oatmeal Stout"
+    when "British-Style Imperial Stout", "American-Style Imperial Stout"
+      beer.category = "Imperial Stout"
+    when "South German-Style Hefeweizen / Hefeweissbier"
+      beer.category = "Hefeweizen"
+    when "Light American Wheat Ale or Lager with Yeast", "Light American Wheat Ale or Lager without Yeast"
+      beer.category = "American Wheat"
+    when "Belgian-Style White (or Wit) / Belgian-Style Wheat"
+      beer.category = "Witbier"
+    when "South German-Style Dunkel Weizen / Dunkel Weissbier", "Bamberg-Style Weiss (Smoke) Rauchbier (Dunkel or Helles)"
+      beer.category = "Dunkelweizen"
+    when "South German-Style Weizenbock / Weissbock"
+      beer.category = "Weizenbock"
+    when "German-Style Pilsener", "Bohemian-Style Pilsener", "American-Style Pilsener", "International-Style Pilsener"
+      beer.category = "Pilsener"
+    when "Münchner (Munich)-Style Helles", "Bamberg-Style Helles Rauchbier", "Dortmunder / European-Style Export"
+      beer.category = "Helles / Dortmuner"
+    when "Vienna-Style Lager"
+      beer.category = "Vienna"
+    when "American-Style Amber Lager"
+      beer.category = "Amber Lager"
+    when "American-Style Dark Lager"
+      beer.category = "Dark Lager"
+    when "German-Style Heller Bock/Maibock"
+      beer.category = "Maibock"
+    when "German-Style Doppelbock"
+      beer.category = "Doppelbock"
+    when "French & Belgian-Style Saison"
+      beer.category = "Saison"
+    when "Belgian-Style Lambic", "Belgian-Style Gueuze Lambic"
+      beer.category = "Lambic"
+    else 
+      beer.category = default_style
+    end
+    beer
+  end
 
 
   def self.beers
-
     for i in 1..583
-      puts i
-      result = HTTParty.get("http://api.brewerydb.com/v2/beers/?key=#{CONFIG['brewerydb']['key']}&p=#{i}&status=verified&format=json")
-      parsed_results = JSON.parse(result.to_json)["data"]
-      parsed_results.each do |result|
-        if result["status"] == "verified"
-          new_beer = Beer.new(name: result["name"],
-           description: result["description"],
-           abv: result["abv"])
-
-          if result["available"]
-            new_beer.available = result["available"]["name"]
-          end
-
-          if result["labels"]
-            new_beer.label_url = result["labels"]["medium"]
-          end
-
-          if result["style"]
-
-            new_beer.style = result["style"]["name"]
-
-            case new_beer.style
-            when "American-Style Cream Ale or Lager", "Golden or Blonde Ale", "Belgian-Style Blonde Ale"
-              new_beer.category = "Cream Ale / Blonde Ale"
-            when "Ordinary Bitter", "Special Bitter or Best Bitter", "Extra Special Bitter"
-              new_beer.category = "Bitter"
-            when "Classic English-Style Pale Ale", "American-Style Pale Ale", "American-Style Strong Pale Ale", "Belgian-Style Pale Ale", "International-Style Pale Ale", "Australasian-Style Pale Ale"
-              new_beer.category = "Pale Ale"
-            when "English-Style India Pale Ale", "American-Style India Pale Ale"
-              new_beer.category = "IPA"
-            when "Imperial or Double India Pale Ale"
-              new_beer.category = "Double IPA"
-            when "American-Style Amber/Red Ale", "Irish-Style Red Ale"
-              new_beer.category = "Amber Ale / Red Ale"
-            when "Scotch Ale"
-              new_beer.category = "Scotch Ale"
-            when "English-Style Brown Ale", "American-Style Brown Ale", "German-Style Brown Ale / Düsseldorf-Style Altbier"
-              new_beer.category = "Brown Ale / Altbier"
-            when "Belgian-Style Dubbel"
-              new_beer.category = "Abbey Dubbel"
-            when "Belgian-Style Tripel"
-              new_beer.category = "Abbey Tripel"
-            when "Old Ale", "Strong Ale Belgian-Style Pale Strong Ale", "Belgian-Style Dark Strong Ale"
-              new_beer.category = "Old Ale / Strong Ale"
-            when "British-Style Barley Wine Ale", "American-Style Barley Wine Ale"
-              new_beer.category = "Barley Wine"
-            when "Brown Porter", "Robust Porter", "Smoke Porter", "Baltic-Style Porter", "American-Style Imperial Porter"
-              new_beer.category = "Porter"
-            when "Classic Irish-Style Dry Stout"
-              new_beer.category = "Dry Stout"
-            when "Oatmeal Stout", "Sweet or Cream Stout"
-              new_beer.category = "Oatmeal Stout"
-            when "British-Style Imperial Stout", "American-Style Imperial Stout"
-              new_beer.category = "Imperial Stout"
-            when "South German-Style Hefeweizen / Hefeweissbier"
-              new_beer.category = "Hefeweizen"
-            when "Light American Wheat Ale or Lager with Yeast", "Light American Wheat Ale or Lager without Yeast"
-              new_beer.category = "American Wheat"
-            when "Belgian-Style White (or Wit) / Belgian-Style Wheat"
-              new_beer.category = "Witbier"
-            when "South German-Style Dunkel Weizen / Dunkel Weissbier", "Bamberg-Style Weiss (Smoke) Rauchbier (Dunkel or Helles)"
-              new_beer.category = "Dunkelweizen"
-            when "South German-Style Weizenbock / Weissbock"
-              new_beer.category = "Weizenbock"
-            when "German-Style Pilsener", "Bohemian-Style Pilsener", "American-Style Pilsener", "International-Style Pilsener"
-              new_beer.category = "Pilsener"
-            when "Münchner (Munich)-Style Helles", "Bamberg-Style Helles Rauchbier", "Dortmunder / European-Style Export"
-              new_beer.category = "Helles / Dortmuner"
-            when "Vienna-Style Lager"
-              new_beer.category = "Vienna"
-            when "American-Style Amber Lager"
-              new_beer.category = "Amber Lager"
-            when "American-Style Dark Lager"
-              new_beer.category = "Dark Lager"
-            when "German-Style Heller Bock/Maibock"
-              new_beer.category = "Maibock"
-            when "German-Style Doppelbock"
-              new_beer.category = "Doppelbock"
-            when "French & Belgian-Style Saison"
-              new_beer.category = "Saison"
-            when "Belgian-Style Lambic", "Belgian-Style Gueuze Lambic"
-              new_beer.category = "Lambic"
-            else 
-              new_beer.category = result["style"]["category"]["name"]
-            end
-          end
-        end
-        
-        new_beer.save unless Beer.find_by_name(new_beer.name)
-
-      end
+      results = get_beer_data(i)
+      beer_info_array = parse_beer_data(results)
+      create_beer_objects(beer_info_array)
     end
   end
+
 end
 
 Seed.genres
