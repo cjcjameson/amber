@@ -10,7 +10,7 @@ class LocationLookupController < ApplicationController
     consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
     access_token = OAuth::AccessToken.new(consumer, token, token_secret)
     search_term = params[:genre].gsub(' ', '+')
-    path = "/v2/search?term=#{search_term}&location=#{params[:zipcode]}"
+    path = "/v2/search?term=#{search_term}+beer&location=#{params[:zipcode]}"
     response = JSON.parse(access_token.get(path).body)
     latitude = response["region"]["center"]["latitude"]
     longitude = response["region"]["center"]["longitude"]
