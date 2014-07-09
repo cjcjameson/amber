@@ -8,4 +8,6 @@
 }
 html, body {
   min-height: 100%;
+  font-family:"HelveticaNeue", "Helvetica Neue", sans-serif;
+  font-size: 0.95em;
 }
