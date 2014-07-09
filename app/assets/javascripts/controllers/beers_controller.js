@@ -1,5 +1,6 @@
 function BeersController(view){
 	this.view = view;
+	this.beers = [];
 	this.bindView()
 }
 BeersController.prototype = {
@@ -13,8 +14,8 @@ BeersController.prototype = {
 		event.preventDefault();
 		this.ajaxSearch()
 	},
-	captureChosenGenre: function(id){
-		return $('#'+id).clone()
+	captureChosenGenre: function(genreId){
+		return $('#'+genreId).clone()
 	},
 	clearGenres: function(){
 		this.view.empty($('#search_results'))
@@ -28,14 +29,13 @@ BeersController.prototype = {
 		method: 'GET',
 		data: {genre: event.target.id},
 		dataType: 'json'
-		}).success(this.displayBeers.bind(this))
-	},
-	displayBeers: function(data){
-		var beers = data.beers
-		this.view.empty($('#beer_results'))
-		for (var sample = 0; sample < beers.length; sample++){
-			var beer = new Beer(beers[sample].beers)
-			this.view.drawBeer(beer)
-		}		
+		}).success(function(data){
+			var beers = data.beers
+			for (var i = 0; i < beers.length; i++){
+				var beer = new Beer(beers[i].beers)
+				this.beers.push(beer)
+			}	
+			this.view.displayBeers(this.beers)
+		}.bind(this))
 	}
 };
