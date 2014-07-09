@@ -1,7 +1,7 @@
 Amber
 =====
 
-[amber-brew.herokuapp.com](http://amber-brew.herokuapp.com) -- NOW LIVE!!
+[amber-brew.herokuapp.com](http://amber-brew.herokuapp.com) -- Site live, but under construction.
 
 Beer pairings for the aficionado
 
@@ -30,11 +30,15 @@ First, ensure that you have the database.yml file in your config directory. Then
 		      token_secret: 'secret'
 
 		test:
+		      consumer_key: 'secret'
+		      consumer_secret: 'secret'
+		      token: 'secret'
+		      token_secret: 'secret'
 
  - Bundle
  - Run "rake db:create"
  - Run "rake db:migrate", and if you want, "rake db:seed"
-   + Our seed files have two different versions. Please contact the team for more information
+   + Our seed files have two different versions. The current seed file pulls information from BreweryDB and requires an API key. Please contact the team for more information
 
  - The following is an example of how config/database.yml should look
 
@@ -69,9 +73,9 @@ First, ensure that you have the database.yml file in your config directory. Then
 ...and you should be good to go!
 
 ###Seed File
- - The seed file included in this version includes data on beer genres, food flavors and corresponding matches.  Also included are a limited list of sample beers.
- - The fully functioning app will reference a full list of beers through an API.
-
+ - The seed file included in this version includes data on beer genres, food flavors and corresponding matches. At present, we do not include a limited list of sample beers in this repo but can provide that on request.
+ - The deployed app references a full list of beers through the BreweryDB API
+ - The deployed app is backed by an Amazon Web Services Relational Database
 
 ##[Team Workflow](/workflow.md)
 
@@ -87,7 +91,11 @@ At the present time, we are not accepting outside contributions.
 
 ##Presenting
 Come see us present on Friday, June 11, 10:00 AM.
+
 Dev Bootcamp
+
 633 Folsom St.
+
 San Francisco CA
+
 6th Floor
