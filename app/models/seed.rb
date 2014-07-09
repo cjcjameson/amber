@@ -1,25 +1,6 @@
 class Seed
-  def self.genres 
-    beer_genres=[
-      {name: "Cream Ale / Blonde Ale", description: "Smooth malty sweetness and balanced bitterness. Pairs perfectly with sweet, hot, or spicy foods including many Asian dishes, chili, mango or jalapeño salsa."},
-      {name: "Bitter", description: "The best examples of Bitter will have some malt aroma, many times having a caramel quality to them. An excellent choice to pair with a variety of foods. The sweetness of the malt will line right up to the sweetness of any kind of shellfish."},
-      {name: "Pale Ale", description: "Malty sweetness balanced by hoppy bitterness. Hops bitterness contrasts with spicy, heat-charred, smoky, or aromatic flavors such as those in Stilton and blue cheese."},
-      {name: "IPA", description: "Increased maltiness with prominent hoppy aroma & flavor. Complements intensely flavorful, highly spiced dishes, such as curry, and bold, sweet desserts like flourless chocolate cake and crème brulée."},
-      {name: "Double IPA", description: "It takes a big flavored dish to stand up to the big flavor and high bitterness of these beers. Grilled meats and saucy barbecue are a good choice for double IPAs."},
-      {name: "Amber Ale / Red Ale", description: "Sweet caramel notes and citrusy aromas with smooth finish. Complements rich, aromatic, spicy and smoked foods such as chili, BBQ ribs, grilled chicken, and beef."},
-      {name: "Scotch Ale", description: "The strong characteristics of the scotch ale fare well with gamey meats like pheasant and quail, as well as more traditional roast pork, smoked salmon, or lamb – especially if grilled slowly over an open flame."},
-      {name: "Brown Ale / Altbier", description: "Malty flavor balanced with hints of caramel and chocolate. Pairs well with roasted pork, smoked sausage and hearty foods; complements the nutty flavors of chicken satay, cashew chicken, pecan pie and peanut sauces."},
-      {name: "Imperial Stout", description: "Prevalent chocolate and coffee flavors. Highlights the nuttiness and braised, caramelized integrity of dishes with brown, savory sauces; complements silky, salty foods like oysters on the half shell."},
-      {name: "Oatmeal Stout", description: "Pairing Oatmeal Stout with food is easy and nearly everything will go well with it. If you are looking for the sweet side, go with desserts that contain chocolate, caramel or dark fruits. These Stouts are also big enough to stand up to most game dishes, as well as hearty stews and grilled meats."},
-      {name: "Old Ale / Strong Ale", description: "Rich dark amber in color to a very dark brown; near black. Try a really strong cheese or a piece of super-dark chocolate, or serve them alone or with a cigar."},
-      {name: "Porter", description: "Roasted flavor complemented by nutty and toffee characteristics. Works well with smoked meats, especially bacon; complements chocolate, espresso and coffee-flavored desserts and soft, creamy cheeses."},
-      {name: "Abbey Dubbel", description: "The Belgian Dubbel is a rich malty beer with some spicy / phenolic and mild alcoholic characteristics. This category is great for aged cheeses and roasted foods. Specifically, roasted beef, lamb, salmon, and pork are all good choices."},
-      {name: "Abbey Tripel", description: "Tripels love basil. You're good to go with anything pesto. Tripels also have enough sweetness to balance strong bitter flavors. The higher alcohol content may make this a poor choice for anything on the spicy side"},
-      {name: "Hefeweizen", description: "Unfiltered with unique clove and banana aromas. Classically paired with weisswurst. Contrasts with pungent, intense aromatics such as mustard flavors, pickles, horseradish and cured meats."},
-      {name: "Witbier", description: "Unfiltered with orange, citrus and coriander aromas. Complements salads with light citrus dressings and feta or goat cheese as well as ceviches and other light, citrus-flavored dishes."},
-      {name: "American Wheat", description: "Very refreshing, slightly tart flavor with subtle citrus aroma. Complements the lighter elements of foods like seared scallops and oil-cooked garlic shrimp, while adding a refreshing flavor contrast."},
-      {name: "Barley Wine", description: "Strong natural sweetness with a slight hoppy bitterness. Strength of flavor often overpowers main dishes; better suited as a complement with strong cheeses or rich, sweet chocolate and caramel desserts. Try with a strong risotto!"}
-    ]
+  def self.genres(genres)
+    beer_genres = JSON.parse(genres)["beer_genres"]
 
     beer_genres.each do |genre|
       BeerGenre.create(genre)
@@ -240,7 +221,7 @@ class Seed
 
 
   def self.beers
-    for i in 1..2
+    for i in 1..583
       results = get_beer_data(i)
       beer_info_array = parse_beer_data(results)
       create_beer_objects(beer_info_array)
