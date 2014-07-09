@@ -1,7 +1,9 @@
 class BeersController < ApplicationController
   respond_to :json
 	def search
-    respond_with Beer.where('category = ?', params[:genre])
+    beers = Beer.where('category = ?', params[:genre])
+    sorted_beers = BeerSorting.new(beers).prioritize
+    respond_with sorted_beers
   end
 
   def show
