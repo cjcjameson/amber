@@ -14,6 +14,6 @@ class BeerPrioritizer
     have_image_url = []
     no_image_url = []
     beers.each { |beer| beer.label_url ? have_image_url << beer : no_image_url << beer }
-    imaged_beers + noimage_beers
+    have_image_url + no_image__url
   end
 end
