@@ -2,5 +2,5 @@
 	<% @flavors.each_with_index do |flavor| %>
 			<label><%= check_box_tag("flavors[]", flavor.name, false, id: flavor.name) %><%= flavor.name%></label>
 	<% end %>
-<p class="centered_text clear_margins"><%= submit_tag("find beers!", id: "find_genre_submit") %></p>
+<p class="centered_text clear_margins"><%= submit_tag("beer me!", id: "find_genre_submit") %></p>
 <% end %>

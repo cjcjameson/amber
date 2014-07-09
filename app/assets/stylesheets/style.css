@@ -20,11 +20,22 @@
   text-align: center;
 }
 
+/* BODY STYLES */
+body {
+  background: -webkit-linear-gradient(#cba55a, #f5dc67);
+  background: -o-linear-gradient(#cba55a, #f5dc67);
+  background: -moz-linear-gradient(#cba55a, #f5dc67);
+  background: linear-gradient(#cba55a, #f5dc67);
+}
 /* NAV STYLES */
 nav {
+  background: -webkit-linear-gradient(#FFFFFF, #cebd9d);
+  background: -o-linear-gradient(#FFFFFF, #cebd9d);
+  background: -moz-linear-gradient(#FFFFFF, #cebd9d);
   background: linear-gradient(#FFFFFF, #cebd9d);
   text-align: center;
   padding: 1% 0% 1% 0%;
+  box-shadow: 0px 10px 20px #bf9850;
 }
 
 nav a {
@@ -48,23 +59,36 @@ nav a {
 .button_to, .button_to div {
   display: inline-block;
 }
+#search_genres {
+  background-color:#FFFFFF;
+  width: 90%;
+  max-width: 650px;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding-top: 5%;
+  margin-top: 2%;
+}
 #search_genres label {
   display: block;
   float: left;
-  width: 9em;
-  text-indent: 5%;
+  width: 8em;
+  text-indent: 3%;
+  color: #49350e;
 }
 #search_genres label input[type="checkbox"] {
-  background-color: #FFFFFF;
-  border-radius: 3px;
-  border: 2px solid #906d2a;
   margin: 3%;
 }
 #find_genre_submit {
   width: 80%;
   margin: 5%;
-  background-color: #906d2a;
+  background-color: #c79c4c;
   color: #FFFFFF;
+  font-weight: bold;
   border-radius: 5px;
-  border: 2px solid #624815;
+  border: 2px solid #906d2a;
+  font-size: 1.5em;
+}
+
+/* HEADING STYLES */
+h2 {
 }
