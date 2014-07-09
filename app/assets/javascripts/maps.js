@@ -4,7 +4,7 @@ function showZipForm(event) {
   $('#search_results').empty()
   $('#beer_results').empty()
   $('#search_results').append(genre)
-  $('#beer_results').append('<form action="/location_lookup/result" method="post" data-id="'+genre_id+'"> <ul> <li><input id="zipcode" name="zipcode" type="text" placeholder="postal code" /></li> <li><input name="commit" class="zip_code_button" type="submit" value="search" data-id="'+genre_id+'" /></li> </ul> </form>')
+  $('#beer_results').append('<form action="/location_lookup/result" class="zip_form" method="post" data-id="'+genre_id+'"> <p><input id="zipcode" name="zipcode" type="text" placeholder="postal code" /></p> <p><input name="commit" class="zip_code_button" type="submit" value="search" data-id="'+genre_id+'" /></p> </form>')
   event.preventDefault();
 }
 
@@ -17,7 +17,7 @@ function yelpCall(event) {
   var genre = $('#'+genre_id).clone()
   $('#search_results').empty()
   $('#search_results').append(genre)
-  var zipcode = $(this).parent().parent().parent().serialize().replace("zipcode=", "")
+  var zipcode = $(this).parent().parent().serialize().replace("zipcode=", "")
   event.preventDefault();
   $.ajax({
     url: '/location_lookup/result',

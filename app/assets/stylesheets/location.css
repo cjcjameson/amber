@@ -1,0 +1,11 @@
+.zip_form p {
+  margin-bottom: 3%;
+}
+.zip_form p input{
+  text-align: center;
+  width: 100%;
+}
+.zip_form {
+  width: 50%;
+  margin: 0 auto;
+}
