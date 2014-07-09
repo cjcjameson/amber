@@ -3,5 +3,5 @@ function Beer(beerJson){
 	this.description = beerJson.description;
 	this.abv = beerJson.abv;
 	this.style= beerJson.style;
-	this.label_url = beerJson.label_url || '../../images/amberlabel.png';
+	this.label_url = beerJson.label_url || '/../../images/amberlabel.png';
 }
