@@ -16,7 +16,7 @@ describe BeerGenresController do
 
   	it "redirects to home page and displays notice if not given flavors params" do
    		get :search, {foo: ["spicy"]}
-  	  expect(response).to include("Please select a flavor profile, you donut!")
+  	  expect(response).to redirect_to root_path
   	end
 
 		it "assigns an array of beers genres if given valid params" do
