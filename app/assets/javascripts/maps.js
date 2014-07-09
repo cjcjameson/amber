@@ -1,10 +1,40 @@
+function showZipForm(event) {
+  var genre_id = event.target.dataset.id
+  var genre = $('#'+genre_id).clone()
+  $('#search_results').empty()
+  $('#beer_results').empty()
+  $('#search_results').append(genre)
+  $('#beer_results').append('<form action="/location_lookup/result" method="post" data-id="'+genre_id+'"> <ul> <li>zipcode: <input id="zipcode" name="zipcode" type="text" /></li> <li><input name="commit" class="zip_code_button" type="submit" value="search" data-id="'+genre_id+'" /></li> </ul> </form>')
+  event.preventDefault();
+}
+
 var geocoder;
 var map;
 var infoWindow;
 
-function initializeMaps() {
-  var lat = $('.lat').html();
-  var lng = $('.lng').html();
+function yelpCall(event) {
+  var genre_id = event.target.dataset.id
+  var genre = $('#'+genre_id).clone()
+  $('#search_results').empty()
+  $('#beer_results').empty()
+  $('#search_results').append(genre)
+  var zipcode = $(this).parent().parent().parent().serialize().replace("zipcode=", "")
+  event.preventDefault();
+  $.ajax({
+    url: '/location_lookup/result',
+    method: 'get',
+    data: {genre: genre_id, zipcode: zipcode},
+    dataType: 'json'
+  }).done(function(data){
+    initializeMaps(data)
+  })
+}
+
+function initializeMaps(data) {
+  var map = $('#map_template').children().clone()
+  $('#search_results').append(map)
+  var lat = data.latitude
+  var lng = data.longitude
   geocoder = new google.maps.Geocoder();
   var latlng = new google.maps.LatLng(lat, lng);
   var mapOptions = {
@@ -12,13 +42,13 @@ function initializeMaps() {
     center: latlng
   };
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-  var addresses = $('.address');
-  var addressList = [];
   infoWindow = new google.maps.InfoWindow({
           content: "..."
         });
+  var addresses = data.data
+  var addressList = [];
   for (i = 0; i < 10; i ++) {
-    var addressItem = $(addresses[i]).html();
+    var addressItem = addresses[i].location.display_address.join(" ")
     addressList.push(addressItem);
   }
   for (i in addressList){
