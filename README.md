@@ -5,7 +5,7 @@ Amber
 
 Beer pairings for the aficionado
 
-##How to use the code
+##How to host the code
 
 ###Setting up your database and rails files
 
@@ -77,14 +77,13 @@ First, ensure that you have the database.yml file in your config directory. Then
  - The deployed app references a full list of beers through the BreweryDB API
  - The deployed app is backed by an Amazon Web Services Relational Database
 
-##[Team Workflow](/workflow.md)
-
-
 ##Team Members
  - [Allison Wong](https://github.com/azywong)
  - [C.J. Jameson](https://github.com/cjcjameson)
  - [Devin Johnson](https://github.com/djohnson0610) (team lead)
  - [Yuzu Saijo](https://github.com/rubberyuzu)
+
+###[Our team workflow agreement](/workflow.md)
 
 ##Contributing
 At the present time, we are not accepting outside contributions.

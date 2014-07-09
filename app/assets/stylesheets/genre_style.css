@@ -1,0 +1,46 @@
+.genre {
+  background-color: #4e3910;
+  margin: 1%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: #FFFFFF;
+  letter-spacing: normal;
+}
+.genre_name{
+	padding-top: 0.7em;
+	color: #F0D878;
+  text-shadow: 1px 1px #3c2e13;
+  font-weight: normal;
+}
+.genre_description{
+	width: 90%;
+	margin: 0 auto;
+	padding-bottom: 5%;
+}
+.button_to, .button_to div {
+  display: inline;
+}
+
+.beer_search_button, .beer_map_button {
+  width: 49.5%;
+  float: left;
+  background-color: #FFFFFF;
+  color: #684d19;
+  font-weight: normal;
+  border: 0px solid #906d2a;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+.beer_search_button {
+  border-bottom-left-radius: 10px;
+}
+.beer_map_button {
+  border-bottom-right-radius: 10px;
+  margin-left: 1%;
+}
+.center_button {
+  text-align: center;
+  margin: 0 auto;
+  width: 98%;
+  margin-bottom: 3em;
+}
