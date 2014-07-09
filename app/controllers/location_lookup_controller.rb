@@ -12,10 +12,15 @@ class LocationLookupController < ApplicationController
     search_term = params[:genre].gsub(' ', '+')
     path = "/v2/search?term=#{search_term}+beer&location=#{params[:zipcode]}"
     response = JSON.parse(access_token.get(path).body)
-    latitude = response["region"]["center"]["latitude"]
-    longitude = response["region"]["center"]["longitude"]
-    response_data = response["businesses"]
-    response = {latitude: latitude, longitude: longitude, data: response_data}
-    respond_with response
+
+    if response
+        latitude = response["region"]["center"]["latitude"]
+        longitude = response["region"]["center"]["longitude"]
+        response_data = response["businesses"]
+        response = {latitude: latitude, longitude: longitude, data: response_data}
+        respond_with response
+    else
+        render status: 400
+    end
   end
 end

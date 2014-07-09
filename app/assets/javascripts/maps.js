@@ -4,7 +4,7 @@ function showZipForm(event) {
   $('#search_results').empty()
   $('#beer_results').empty()
   $('#search_results').append(genre)
-  $('#beer_results').append('<form action="/location_lookup/result" method="post" data-id="'+genre_id+'"> <ul> <li>zipcode: <input id="zipcode" name="zipcode" type="text" /></li> <li><input name="commit" class="zip_code_button" type="submit" value="search" data-id="'+genre_id+'" /></li> </ul> </form>')
+  $('#beer_results').append('<form action="/location_lookup/result" method="post" data-id="'+genre_id+'"> <ul> <li><input id="zipcode" name="zipcode" type="text" placeholder="zipcode" /></li> <li><input name="commit" class="zip_code_button" type="submit" value="search" data-id="'+genre_id+'" /></li> </ul> </form>')
   event.preventDefault();
 }
 
@@ -16,7 +16,6 @@ function yelpCall(event) {
   var genre_id = event.target.dataset.id
   var genre = $('#'+genre_id).clone()
   $('#search_results').empty()
-  $('#beer_results').empty()
   $('#search_results').append(genre)
   var zipcode = $(this).parent().parent().parent().serialize().replace("zipcode=", "")
   event.preventDefault();
@@ -27,10 +26,17 @@ function yelpCall(event) {
     dataType: 'json'
   }).done(function(data){
     initializeMaps(data)
+  }).fail(function(data){
+    regenerateForm(data)
   })
 }
 
+function regenerateForm(data){
+  $('#beer_results').append('<p>Please input a valid zipcode</p>')
+}
+
 function initializeMaps(data) {
+  $('#beer_results').empty()
   var map = $('#map_template').children().clone()
   $('#search_results').append(map)
   var lat = data.latitude
@@ -46,7 +52,6 @@ function initializeMaps(data) {
           content: "..."
         });
   var addresses = data.data
-  debugger
   var addressList = [];
   for (i = 0; i < 5; i ++) {
     var url = addresses[i].url
