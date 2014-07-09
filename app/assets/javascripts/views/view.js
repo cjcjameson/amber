@@ -1,9 +1,10 @@
-function View(){
+function View(target){
+  this.target = target;
 };
 
 View.prototype = {
-	empty: function(target){
-		target.empty()
+	empty: function(){
+		this.target.empty()
 	},
 	drawBeer: function(beer){
 			var sampleBeer = $('#beer_template').children().clone()
