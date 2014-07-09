@@ -48,7 +48,7 @@ function initializeMaps(data) {
   var addresses = data.data
   debugger
   var addressList = [];
-  for (i = 0; i < 10; i ++) {
+  for (i = 0; i < 5; i ++) {
     var url = addresses[i].url
     var name = addresses[i].name
     var image = addresses[i].image_url
