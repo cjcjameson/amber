@@ -3,7 +3,7 @@ class BeerPrioritizer
     @genre = genre
   end
 
-  def find_beers(genre)
+  def find_beers
     beers = Beer.where('category = ?', @genre)
     sort_by_image_availability(beers)
   end
@@ -14,6 +14,6 @@ class BeerPrioritizer
     have_image_url = []
     no_image_url = []
     beers.each { |beer| beer.label_url ? have_image_url << beer : no_image_url << beer }
-    have_image_url + no_image__url
+    have_image_url + no_image_url
   end
 end
