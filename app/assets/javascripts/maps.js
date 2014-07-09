@@ -32,7 +32,8 @@ function yelpCall(event) {
 }
 
 function regenerateForm(data){
-  $('#beer_results').append('<p>Please input a valid zipcode</p>')
+  $('.alert').empty()
+  $('#beer_results').append('<p class="alert">Please input a valid zipcode</p>')
 }
 
 function initializeMaps(data) {
