@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :beer do
-  	name "Coors"
-  	abv 3.4
-  	available "Y"
-  	category "Bitter"
-  	style "American Water-Beer"
-  	description "Rocky mountain cold"  	
+  	name "Hops"
+  	abv 5.5
+  	available "Year Round"
+  	category "IPA"
+  	style "English-Style India Pale Ale"
+  	description "This beer will make you hoppy"  	
   end
 end

@@ -1,29 +1,55 @@
 require 'spec_helper'
 
 describe BeerGenresController do
+
 	context "#search" do
 		before (:each) do
-			spicy = FoodFlavor.create(name: "spicy")
-			ipa = BeerGenre.create(name: "IPA", description: "India Pale Ale (IPA) is a hoppy beer style within the broader category of pale ale.")
+			spicy = FactoryGirl.create(:food_flavor)
+			ipa = FactoryGirl.create(:beer_genre)
+			match = Match.create(food_flavor: spicy, beer_genre: ipa)
+		end
+		
+		it "renders search template if given valid params" do
+   		get :search, {flavors: ["spicy"]}
+   		expect(response).to render_template(:search)
+  	end
+
+  	it "returns a status of 422 if not given flavors params" do
+   		get :search, {foo: ["spicy"]}
+  	  expect(response.status).to eq(422)
+  	end
+
+  	it "renders the text 'Please select a flavor profile' if no flavors are selected" do
+   		get :search, {flavors: []}
+  	  expect(response.body).to have_content('Please select a flavor profile')
+  	end
+
+  	it "returns a status of 422 if flavors params is an empty array" do
+   		get :search, {flavors: []}
+  	  expect(response.status).to eq(422)
+  	end
+
+		it "assigns an array of beers genres if given valid params" do
+			get :search, {flavors: ["spicy"]}
+			expect(assigns(:best_match_genres).class).to eq( Array )
+		end
+	end
+
+	context "#index" do
+		before (:each) do
+			spicy = FactoryGirl.create(:food_flavor)
+			ipa = FactoryGirl.create(:beer_genre)
 			match = Match.create(food_flavor: spicy, beer_genre: ipa)
 		end
 
-		it "returns JSON containing IPA" do
-			pending
-			# xhr :get, :search, flavors: ["spicy"], format: "json"
-			# beer_genres = JSON.parse(response.body)
-			# expect(beer_genres.to_s).to include("IPA")
+		it "renders the index template" do
+			get :index
+   		expect(response).to render_template(:index)
 		end
 
-		it "returns successfully" do
-			pending
-			# xhr :get, :search, flavors: ["spicy"], format: "json"
-			# expect(response).to be_success
-		end
-
-		it "returns an error if not provided any flavorful search terms" do
-			xhr :get, :search, flavors: [], format: "json"
-			expect(response.status).to be >= 400
+		it "assigns an array of all beer genres" do
+			get :index
+   		expect(assigns(:beer_genres)).to eq(BeerGenre.all)
 		end
 	end
 end
