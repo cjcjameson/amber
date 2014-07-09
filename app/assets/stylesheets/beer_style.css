@@ -11,4 +11,20 @@
 .beer_info{
 	padding: 2%;
 }
-
+.beer_name{
+	font-weight: 900;
+	font-size: 1.4em;
+}
+.beer_subtitle{
+	font-style: italic;
+	font-weight: 500;
+}
+.beer_description{
+	font-weight: 200;
+	color: #786048;
+}
+.beer_title{
+	width: 90%;
+	border-bottom: 1px solid #C09048;
+	color: #483030;
+}
