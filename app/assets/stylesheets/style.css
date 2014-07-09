@@ -55,32 +55,7 @@ nav a {
   max-height: 450px;
 }
 
-/* FORM STYLES */
-.button_to, .button_to div {
-  display: inline;
-}
-.genre {
-  background-color: #FFFFFF;
-}
-.beer_search_button, .beer_map_button {
-  width: 144px;
-  float: left;
-  background-color: #c79c4c;
-  color: #FFFFFF;
-  font-weight: bold;
-  border-radius: 5px;
-  border: 2px solid #906d2a;
-  font-size: 0.95em;
-}
-.beer_map_button {
-  margin-left: 1%;
-}
-.center_button {
-  text-align: center;
-  margin: 0 auto;
-  width: 97%;
-  max-width: 320px;
-}
+/* SEARCH FORM STYLES */
 #search_genres {
   background-color:#FFFFFF;
   width: 90%;
@@ -112,5 +87,7 @@ nav a {
 }
 
 /* HEADING STYLES */
-h2 {
+h2.intro {
+  font-weight: normal;
+  color: #3d2e11;
 }
