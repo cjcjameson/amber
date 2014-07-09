@@ -1,4 +1,5 @@
 $(function(){
   beersController = new BeersController(new View())
-  initializeMaps();
+  $('#search_results').on('click', '.beer_map_button', showZipForm)
+  $('#beer_results').on('click', '.zip_code_button', yelpCall)
 })

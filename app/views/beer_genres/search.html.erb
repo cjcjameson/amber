@@ -5,7 +5,7 @@
         <h4><%= genre.name %></h4>
         <p><%= genre.description %></p>
         <%= button_to "Get Suggestions!", {action: "search", controller: "beers"}, class: "beer_search_button",id: genre.name, "data-id" => genre.id , remote: true %>
-        <%= button_to "Find Locations!", {action: "index", controller: "location_lookup"}, form_class: "" %>
+        <%= button_to "Find Locations!", {action: "index", controller: "location_lookup"}, class: "beer_map_button", "data-id" => genre.id, remote: true %>
       </div>
     <% end %>
   </div>
@@ -15,3 +15,7 @@
   <div class="sample_beer"></div>
 </div>
 <div id="beer_results"></div>
+
+<div id="map_template" class="hidden">
+  <div id="map-canvas" style="width: 500px; height: 450px;"></div>
+</div>
