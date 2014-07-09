@@ -6,11 +6,16 @@ describe BeerPrioritizer do
 			FactoryGirl.create(:beer, label_url: "/has_label")
 		end
 
-		context "#find_beers" do
+		context "when finding beers" do
 			let(:result){BeerPrioritizer.new('IPA').find_beers}
 
 			it "finds and returns beers that with a category that match the given genre" do
 				expect(result.first.category).to eq('IPA')
+			end
+
+			it "truncates results to a maximum of 20" do
+				25.times{FactoryGirl.create(:beer)}
+				expect(result.length).to eq(20)
 			end
 
 			context "sorts the results, giving priority to beers with a label_url" do
@@ -22,6 +27,5 @@ describe BeerPrioritizer do
 					expect(result.last.label_url).to be(nil)
 				end
 			end
-
 		end
 end
