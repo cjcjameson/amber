@@ -30,10 +30,7 @@
 .beer_search_button, .beer_map_button {
   width: 49.5%;
   float: left;
-  background: -webkit-linear-gradient(#cebd9d, #FFFFFF);
-  background: -o-linear-gradient(#cebd9d, #FFFFFF);
-  background: -moz-linear-gradient(#cebd9d, #FFFFFF);
-  background: linear-gradient(#cebd9d, #FFFFFF);
+  background-color: #FFFFFF;
   color: #684d19;
   font-weight: normal;
   border: 0px solid #906d2a;
