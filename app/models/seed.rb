@@ -7,13 +7,10 @@ class Seed
     end
   end
 
-  def self.flavors
-    flavors = ["strong","bitter","fried/fatty","spicy","salty",
-      "floral","light","citrus/acidic","sweet","spiced","creamy",
-      "rich","earthy","nutty","gamey","savory","grilled","smokey",
-      "heavy","hearty"]
-    flavors.each do |f|
-      FoodFlavor.create(name: f)
+  def self.flavors(flavors)
+    food_flavors = JSON.parse(flavors)
+    food_flavors.each do |flavor|
+      FoodFlavor.create(flavor)
     end
   end
 
