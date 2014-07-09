@@ -57,7 +57,29 @@ nav a {
 
 /* FORM STYLES */
 .button_to, .button_to div {
-  display: inline-block;
+  display: inline;
+}
+.genre {
+  background-color: #FFFFFF;
+}
+.beer_search_button, .beer_map_button {
+  width: 144px;
+  float: left;
+  background-color: #c79c4c;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid #906d2a;
+  font-size: 0.95em;
+}
+.beer_map_button {
+  margin-left: 1%;
+}
+.center_button {
+  text-align: center;
+  margin: 0 auto;
+  width: 97%;
+  max-width: 320px;
 }
 #search_genres {
   background-color:#FFFFFF;
@@ -76,7 +98,7 @@ nav a {
   color: #49350e;
 }
 #search_genres label input[type="checkbox"] {
-  margin: 3%;
+  margin: 2%;
 }
 #find_genre_submit {
   width: 80%;
