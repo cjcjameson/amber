@@ -1,11 +1,8 @@
+/* GENERAL STYLES */
+@font-face {
+  font-family: "Bernard";
+  src: url(/assets/26605.ttf);
+}
 .hidden {
   display: none;
-}
-label {
-  display: block;
-  float: left;
-  width: 9em;
-}
-.clear_margins{
-  clear:both;
 }
