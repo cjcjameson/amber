@@ -1,7 +1,6 @@
 class Seed
   def self.genres(genres)
     beer_genres = JSON.parse(genres)
-
     beer_genres.each do |genre|
       BeerGenre.create(genre)
     end

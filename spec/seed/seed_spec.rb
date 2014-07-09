@@ -9,6 +9,15 @@ describe Seed do
 		end
 	end
 
+	context "#flavors" do
+		
+		it "creates FoodFlavor objects when passed a valid json formatted string" do
+			flavors = '[{"name": "salty"},{"name": "spicy"}]'
+			expect{Seed.flavors(flavors)}.to change{FoodFlavor.count}.by(2)
+		end
+
+	end
+
 
 	context "#parse_beer_data" do
 		it "returns an array when given a json format string" do
