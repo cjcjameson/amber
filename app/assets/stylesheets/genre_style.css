@@ -6,15 +6,9 @@
   color: #FFFFFF;
   letter-spacing: normal;
 }
-.sample_beer{
-	background-color: #f6f6e7;
-	opacity: 0.9;
-	margin: 1%;
-	border-radius: 10px;
-}
 .genre_name{
 	padding-top: 0.7em;
-	color: #c78911;
+	color: #F0D878;
   text-shadow: 1px 1px #3c2e13;
   font-weight: normal;
 }
