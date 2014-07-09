@@ -1,0 +1,14 @@
+.label_pic{
+	padding-top: 10px;
+}
+.sample_beer{
+	min-height: 200px;
+	background-color: white;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	border-bottom: 4px solid #C09048;
+}
+.beer_info{
+	padding: 2%;
+}
+
