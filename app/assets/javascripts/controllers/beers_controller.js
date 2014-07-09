@@ -1,41 +1,39 @@
 function BeersController(view){
 	this.view = view;
-	this.bindView()
+	this.beers = [];
+
+	this.initializeEvents()
 }
+
 BeersController.prototype = {
-	bindView: function(){
-		$('#search_results').on('click', '.beer_search_button', this.getBeers.bind(this) )
+	initializeEvents: function(){
+		beersController = this;
+		$('#search_results .beer_search_button')
+			.on('click', this.getBeers.bind(this) )
+
 	},
+
 	getBeers: function(event){
-		var genre = this.captureChosenGenre(event.target.dataset.id)
-		this.clearGenres()
-		this.appendChosenGenre(genre)
 		event.preventDefault();
-		this.ajaxSearch()
+		this.chosenGenreId = event.target.dataset.id
+		this.ajaxSearch(event)
 	},
-	captureChosenGenre: function(id){
-		return $('#'+id).clone()
-	},
-	clearGenres: function(){
-		this.view.empty($('#search_results'))
-	},
-	appendChosenGenre: function(genre){
-		$('#search_results').append(genre)
-	},
-	ajaxSearch: function(){
+
+	ajaxSearch: function(event){
 		$.ajax({
-		url: '/beers/search',
-		method: 'GET',
-		data: {genre: event.target.id},
-		dataType: 'json'
-		}).success(this.displayBeers.bind(this))
-	},
-	displayBeers: function(data){
-		var beers = data.beers
-		this.view.empty($('#beer_results'))
-		for (var sample = 0; sample < beers.length; sample++){
-			var beer = new Beer(beers[sample].beers)
-			this.view.drawBeer(beer)
-		}		
+			url: '/beers/search',
+			method: 'GET',
+			data: {genre: event.target.id},
+			dataType: 'json'
+		}).success(function(data) {
+			var beersJson = data.beers,
+				len = beersJson.length;
+
+			for (var i = 0; i < len; i++) {
+	      this.beers.push(new Beer(beersJson[i].beers))
+	    }
+
+			this.view.displayBeers(this);
+		}.bind(this))
 	}
 };
