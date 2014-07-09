@@ -46,19 +46,24 @@ function initializeMaps(data) {
           content: "..."
         });
   var addresses = data.data
+  debugger
   var addressList = [];
   for (i = 0; i < 10; i ++) {
+    var url = addresses[i].url
+    var name = addresses[i].name
+    var image = addresses[i].image_url
     var addressItem = addresses[i].location.display_address.join(" ")
     addressList.push(addressItem);
+    $('#search_results').append('<div class="business_box"><h5><a href="'+url+'">'+name+'</a></h5><div class="side_image"><img src="'+image+'"></div><p>'+addressItem+'</p></div>')
   }
   for (i in addressList){
-    var address = addressList[i];
+    var address = addressList[i]
     geocoder.geocode({'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location,
-            html: '<div class="infoWindow">' + results[0].formatted_address + '</div>'
+            html: '<div class="infoWindow"><p>'+results[0].formatted_address+'</p></div>'
         });
         google.maps.event.addListener(marker, 'click', function(){
           infoWindow.setContent(this.html);
