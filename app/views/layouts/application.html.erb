@@ -8,13 +8,15 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD1vH1P_r1rkvu8IR36I41Rr_KuLPKZMg">
     </script>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 
 <body>
-  <%= render partial: "/home/nav" %>
+	<div class="container">
+  	<%= render partial: "/home/nav" %>
 
 
-<%= yield %>
-
+		<%= yield %>
+	</div>
 </body>
 </html>
