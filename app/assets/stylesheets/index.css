@@ -1,3 +1,11 @@
 .hidden {
   display: none;
 }
+label {
+  display: block;
+  float: left;
+  width: 9em;
+}
+.clear_margins{
+  clear:both;
+}

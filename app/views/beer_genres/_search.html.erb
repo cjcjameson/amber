@@ -1,27 +1,6 @@
-
 <%= form_tag("/beer_genres/search", method: "get", id: "search_genres") do %>
-	<table id="flavor_table" class="centered_block">
-	<% @flavors.each_with_index do |flavor, index| %>
-		<% if index % 4 == 0 %>
-			<tr>
-				<td>
-					<%= check_box_tag("flavors[]", flavor.name, false, id: flavor.name) %>
-					<%= label_tag(flavor.name, flavor.name)%>
-				</td>
-		<% elsif index % 4 == 3 %>
-				<td>
-					<%= check_box_tag("flavors[]", flavor.name, false, id: flavor.name) %>
-					<%= label_tag(flavor.name, flavor.name)%>
-				</td>
-			</tr>
-		<% else %>
-			<td>
-				<%= check_box_tag("flavors[]", flavor.name, false, id: flavor.name) %>
-				<%= label_tag(flavor.name, flavor.name)%>
-			</td>
-		<% end %>
+	<% @flavors.each_with_index do |flavor| %>
+			<label><%= check_box_tag("flavors[]", flavor.name, false, id: flavor.name) %><%= flavor.name%></label>
 	<% end %>
-	</table>
-	<p class="centered_text clear_margins"><%= submit_tag("find beers!", id: "find_genre_submit") %></p>
-
+<p class="centered_text clear_margins"><%= submit_tag("find beers!", id: "find_genre_submit") %></p>
 <% end %>
