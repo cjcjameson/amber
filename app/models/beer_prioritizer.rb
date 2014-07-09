@@ -3,7 +3,7 @@ class BeerPrioritizer
     @genre = genre
   end
 
-  def find_beers(@genre)
+  def find_beers(genre)
     beers = Beer.where('category = ?', @genre)
     sort_by_image_availability(beers)
   end
