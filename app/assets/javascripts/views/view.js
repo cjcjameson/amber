@@ -8,10 +8,9 @@ View.prototype = {
 	displayBeers: function(beers){
 		this.empty($('#beer_results'))
 		for (var i = 0; i < beers.length; i++){
-			debugger
 			this.drawBeer(beers[i])
-
-		}		
+		}	
+	  $('#beer_results').append('<div class="sixteen columns back_button_wrapper"><a href="#search_viewport"><div class="back_button">Back To Top</div></a></div>')	
 	},
 	drawBeer: function(beer){
 			var sampleBeer = $('#beer_template').children().clone()
