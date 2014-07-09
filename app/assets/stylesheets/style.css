@@ -7,4 +7,10 @@
 }
 .sample_beer{
 	position: relative;
+	padding-bottom: 2em;
+}
+.inline{
+	margin-right: 1em;
+	display:inline;
+	/*display: inline-block;*/
 }
