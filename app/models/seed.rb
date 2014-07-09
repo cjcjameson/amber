@@ -13,115 +13,23 @@ class Seed
     end
   end
 
-
-  def self.matches
-    cream_blonde = BeerGenre.find(1)
-    bitter_beer = BeerGenre.find(2)
-    pale_ale = BeerGenre.find(3)
-    ipa = BeerGenre.find(4)
-    double_ipa = BeerGenre.find(5)
-    amber_red = BeerGenre.find(6)
-    scotch_ale = BeerGenre.find(7)
-    brown_altbier = BeerGenre.find(8)
-    imperial_stout = BeerGenre.find(9)
-    oatmeal_stout = BeerGenre.find(10)
-    old_strong = BeerGenre.find(11)
-    porter = BeerGenre.find(12)
-    dubbel = BeerGenre.find(13)
-    tripel = BeerGenre.find(14)
-    hefe = BeerGenre.find(15)
-    witbier  = BeerGenre.find(16)
-    american_wheat = BeerGenre.find(17)
-    barley_wine = BeerGenre.find(18)
-
-    strong = FoodFlavor.find(1)
-    bitter = FoodFlavor.find(2)
-    fried_fatty = FoodFlavor.find(3)
-    spicy = FoodFlavor.find(4)
-    salty = FoodFlavor.find(5)
-    floral = FoodFlavor.find(6)
-    light = FoodFlavor.find(7)
-    citrus_acidic = FoodFlavor.find(8)
-    sweet = FoodFlavor.find(9)
-    spiced = FoodFlavor.find(10)
-    creamy = FoodFlavor.find(11)
-    rich = FoodFlavor.find(12)
-    earthy = FoodFlavor.find(13)
-    nutty = FoodFlavor.find(14)
-    gamey = FoodFlavor.find(15)
-    savory = FoodFlavor.find(16)
-    grilled = FoodFlavor.find(17)
-    smokey = FoodFlavor.find(18)
-    heavy = FoodFlavor.find(19)
-    hearty = FoodFlavor.find(20)
-
-    matches = []
-
-    matches << Match.new(beer_genre: cream_blonde, food_flavor: light, intensity: 5)
-    matches << Match.new(beer_genre: cream_blonde, food_flavor: citrus_acidic, intensity: 4)
-    matches << Match.new(beer_genre: cream_blonde, food_flavor: sweet, intensity: 5)
-    matches << Match.new(beer_genre: cream_blonde, food_flavor: spicy, intensity: 4)
-    matches << Match.new(beer_genre: bitter_beer, food_flavor: sweet, intensity: 3)
-    matches << Match.new(beer_genre: bitter_beer, food_flavor: spicy, intensity: 3)
-    matches << Match.new(beer_genre: bitter_beer, food_flavor: fried_fatty, intensity: 3)
-    matches << Match.new(beer_genre: bitter_beer, food_flavor: smokey, intensity: 4)
-    matches << Match.new(beer_genre: pale_ale, food_flavor: fried_fatty, intensity: 5)
-    matches << Match.new(beer_genre: pale_ale, food_flavor: earthy, intensity: 3)
-    matches << Match.new(beer_genre: pale_ale, food_flavor: smokey, intensity: 4)
-    matches << Match.new(beer_genre: ipa, food_flavor: spiced, intensity: 3)
-    matches << Match.new(beer_genre: ipa, food_flavor: creamy, intensity: 5)
-    matches << Match.new(beer_genre: ipa, food_flavor: spicy, intensity: 5)
-    matches << Match.new(beer_genre: double_ipa, food_flavor: grilled, intensity: 5)
-    matches << Match.new(beer_genre: double_ipa, food_flavor: salty, intensity: 5)
-    matches << Match.new(beer_genre: double_ipa, food_flavor: smokey, intensity: 4)
-    matches << Match.new(beer_genre: double_ipa, food_flavor: spicy, intensity: 3)
-    matches << Match.new(beer_genre: amber_red, food_flavor: nutty, intensity: 5)
-    matches << Match.new(beer_genre: amber_red, food_flavor: smokey, intensity: 5)
-    matches << Match.new(beer_genre: amber_red, food_flavor: sweet, intensity: 4)
-    matches << Match.new(beer_genre: amber_red, food_flavor: salty, intensity: 4)
-    matches << Match.new(beer_genre: amber_red, food_flavor: spicy, intensity: 3)
-    matches << Match.new(beer_genre: scotch_ale, food_flavor: rich, intensity: 4)
-    matches << Match.new(beer_genre: scotch_ale, food_flavor: gamey, intensity: 4)
-    matches << Match.new(beer_genre: scotch_ale, food_flavor: smokey, intensity: 3)
-    matches << Match.new(beer_genre: brown_altbier, food_flavor: savory, intensity: 4)
-    matches << Match.new(beer_genre: brown_altbier, food_flavor: hearty, intensity: 4)
-    matches << Match.new(beer_genre: brown_altbier, food_flavor: nutty, intensity: 4)
-    matches << Match.new(beer_genre: brown_altbier, food_flavor: heavy, intensity: 4)
-    matches << Match.new(beer_genre: imperial_stout, food_flavor: creamy, intensity: 3)
-    matches << Match.new(beer_genre: imperial_stout, food_flavor: savory, intensity: 4)
-    matches << Match.new(beer_genre: imperial_stout, food_flavor: bitter, intensity: 3)
-    matches << Match.new(beer_genre: oatmeal_stout, food_flavor: sweet, intensity: 4)
-    matches << Match.new(beer_genre: oatmeal_stout, food_flavor: bitter, intensity: 5)
-    matches << Match.new(beer_genre: oatmeal_stout, food_flavor: gamey, intensity: 3)
-    matches << Match.new(beer_genre: oatmeal_stout, food_flavor: hearty, intensity: 4)
-    matches << Match.new(beer_genre: old_strong, food_flavor: gamey, intensity: 5)
-    matches << Match.new(beer_genre: old_strong, food_flavor: strong, intensity: 5)
-    matches << Match.new(beer_genre: porter, food_flavor: hearty, intensity: 5)
-    matches << Match.new(beer_genre: porter, food_flavor: smokey, intensity: 5)
-    matches << Match.new(beer_genre: porter, food_flavor: bitter, intensity: 5)
-    matches << Match.new(beer_genre: dubbel, food_flavor: salty, intensity: 3)
-    matches << Match.new(beer_genre: dubbel, food_flavor: savory, intensity: 5)
-    matches << Match.new(beer_genre: tripel, food_flavor: floral, intensity: 3)
-    matches << Match.new(beer_genre: tripel, food_flavor: sweet, intensity: 2)
-    matches << Match.new(beer_genre: tripel, food_flavor: nutty, intensity: 4)
-    matches << Match.new(beer_genre: tripel, food_flavor: bitter, intensity: 5)
-    matches << Match.new(beer_genre: hefe, food_flavor: spicy, intensity: 3)
-    matches << Match.new(beer_genre: hefe, food_flavor: light, intensity: 4)
-    matches << Match.new(beer_genre: hefe, food_flavor: citrus_acidic, intensity: 3)
-    matches << Match.new(beer_genre: witbier, food_flavor: sweet, intensity: 2)
-    matches << Match.new(beer_genre: witbier, food_flavor: floral, intensity: 5)
-    matches << Match.new(beer_genre: witbier, food_flavor: citrus_acidic, intensity: 3)
-    matches << Match.new(beer_genre: american_wheat, food_flavor: light, intensity: 5)
-    matches << Match.new(beer_genre: american_wheat, food_flavor: citrus_acidic, intensity: 5)
-    matches << Match.new(beer_genre: barley_wine, food_flavor: salty, intensity: 3)
-    matches << Match.new(beer_genre: barley_wine, food_flavor: creamy, intensity: 5)
-    matches << Match.new(beer_genre: barley_wine, food_flavor: rich, intensity: 5)
-
-    matches.each do |match|
-      match.save
+  def self.matches(matches)
+    all_matches = JSON.parse(matches)
+    all_matches.each do |match|
+      Match.create(beer_genre: BeerGenre.find_by_name(match["beer_genre"]),
+                  food_flavor: FoodFlavor.find_by_name(match["food_flavor"]),
+                  intensity: match["intensity"])
     end
   end
 
+  def self.beers
+    for i in 1..583
+      results = get_beer_data(i)
+      beer_info_array = parse_beer_data(results)
+      create_beer_objects(beer_info_array)
+    end
+  end
+  
   def self.get_beer_data(page_number)
     HTTParty.get("http://api.brewerydb.com/v2/beers/?key=#{CONFIG['brewerydb']['key']}&p=#{page_number}&status=verified&format=json").to_json
   end
@@ -216,12 +124,5 @@ class Seed
   end
 
 
-  def self.beers
-    for i in 1..583
-      results = get_beer_data(i)
-      beer_info_array = parse_beer_data(results)
-      create_beer_objects(beer_info_array)
-    end
-  end
 
 end
