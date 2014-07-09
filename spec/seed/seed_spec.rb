@@ -15,7 +15,7 @@ describe Seed do
 		end
 	end
 
-	describe "when seeding beer objects"
+	describe "when seeding beer objects" do
 		let(:sample_api_response){File.read("#{Rails.root}/spec/dummy_api_resp.json")}
 		let(:unverified_beer){JSON.parse(File.read("#{Rails.root}/spec/unverified_beer_sample.json"))}
 		let(:verified_beer){JSON.parse(File.read("#{Rails.root}/spec/verified_beer_sample.json"))}
@@ -45,7 +45,7 @@ describe Seed do
 				expect(Seed.set_beer_category(beer, beer.style).category).to eq("Cream Ale / Blonde Ale")
 			end
 		end
-
+	end
 end
 
 
