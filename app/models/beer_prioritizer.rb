@@ -11,9 +11,9 @@ class BeerPrioritizer
   private
 
   def sort_by_image_availability(beers)
-    have_image_url = []
-    no_image_url = []
-    beers.each { |beer| beer.label_url ? have_image_url << beer : no_image_url << beer }
-    have_image_url + no_image_url
+    have_label_url = []
+    no_label_url = []
+    beers.each { |beer| beer.label_url ? have_label_url << beer : no_label_url << beer }
+    have_label_url + no_label_url
   end
 end
