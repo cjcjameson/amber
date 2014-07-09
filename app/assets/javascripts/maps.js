@@ -4,7 +4,7 @@ function showZipForm(event) {
   $('#search_results').empty()
   $('#beer_results').empty()
   $('#search_results').append(genre)
-  $('#beer_results').append('<form action="/location_lookup/result" method="post" data-id="'+genre_id+'"> <ul> <li><input id="zipcode" name="zipcode" type="text" placeholder="zipcode" /></li> <li><input name="commit" class="zip_code_button" type="submit" value="search" data-id="'+genre_id+'" /></li> </ul> </form>')
+  $('#beer_results').append('<form action="/location_lookup/result" method="post" data-id="'+genre_id+'"> <ul> <li><input id="zipcode" name="zipcode" type="text" placeholder="postal code" /></li> <li><input name="commit" class="zip_code_button" type="submit" value="search" data-id="'+genre_id+'" /></li> </ul> </form>')
   event.preventDefault();
 }
 
