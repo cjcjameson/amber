@@ -11,7 +11,18 @@ BeersController.prototype = {
 		this.clearGenres()
 		this.appendChosenGenre(genre)
 		event.preventDefault();
-
+		this.ajaxSearch()
+	},
+	captureChosenGenre: function(id){
+		return $('#'+id).clone()
+	},
+	clearGenres: function(){
+		this.view.empty($('#search_results'))
+	},
+	appendChosenGenre: function(genre){
+		$('#search_results').append(genre)
+	},
+	ajaxSearch: function(){
 		$.ajax({
 		url: '/beers/search',
 		method: 'GET',
@@ -19,33 +30,12 @@ BeersController.prototype = {
 		dataType: 'json'
 		}).success(this.displayBeers.bind(this))
 	},
-	captureChosenGenre: function(id){
-		return $('#'+id).clone()
-	},
-	clearGenres: function(){
-		$('#search_results').empty()
-	},
-	appendChosenGenre: function(genre){
-		$('#search_results').append(genre)
-	},
 	displayBeers: function(data){
 		var beers = data.beers
 		this.view.empty($('#beer_results'))
 		for (var sample = 0; sample < beers.length; sample++){
-			var sampleBeer = $('#beer_template').children().clone()
-			var beer = beers[sample].beers
-			var name = beer.name
-			var description = beer.description
-			var abv = beer.abv
-			var style = beer.style
-			var imgUrl = beer.label_url
-			this.view.draw(sampleBeer,"<h4>"+name+"</h4>")
-			this.view.draw(sampleBeer,"<h6>"+style+"</h6>")
-			this.view.draw(sampleBeer,"<p>"+description+"</p>")
-			this.view.draw(sampleBeer,"<img src='"+imgUrl+"'>")
-			this.view.draw($('#beer_results'),sampleBeer)
-		}
+			var beer = new Beer(beers[sample].beers)
+			this.view.drawBeer(beer)
+		}		
 	}
-
-
-}
+};
