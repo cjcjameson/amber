@@ -18,7 +18,7 @@ describe GenreCalculator do
 			it "responds with a single match" do
 				expect(spicy_calc.length).to eq 1
 			end
-			it "responds with an array of BeerGenres when given a list of flavors" do
+			it "responds with a collection of BeerGenres when given a list of flavors" do
 				expect(spicy_calc.first).to be_instance_of(BeerGenre)
 			end
 		end
@@ -33,12 +33,12 @@ describe GenreCalculator do
 			end
 		end
 
-		it "responds with an array of BeerGenres when given a list containing at least one valid flavor" do
+		it "responds with a collection of BeerGenres when given a list containing at least one valid flavor" do
 			expect(GenreCalculator.new(["foo", "spicy", "bar"]).get_best_genre_matches.length).to eq 1
 		end
 
-		it "responds with an empty array when given a list of invalid flavors" do
-			expect(GenreCalculator.new(["foo"]).get_best_genre_matches).to be_empty
+		it "responds with an empty collection when given a list of flavors that do not exist" do
+			expect(GenreCalculator.new(["foo", "purple"]).get_best_genre_matches).to be_empty
 		end
 	end
 end
