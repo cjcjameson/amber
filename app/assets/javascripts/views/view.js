@@ -8,9 +8,7 @@ View.prototype = {
 	displayBeers: function(beers){
 		this.empty($('#beer_results'))
 		for (var i = 0; i < beers.length; i++){
-			debugger
 			this.drawBeer(beers[i])
-
 		}		
 	},
 	drawBeer: function(beer){
