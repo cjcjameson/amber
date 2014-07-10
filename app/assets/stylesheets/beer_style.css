@@ -20,12 +20,39 @@
 	font-weight: 500;
 }
 .beer_description{
+	width: 90%;
 	font-weight: 200;
 	width: 90%;
 	color: #786048;
+	font-size: 0.8em;
+	line-height: 1.5em;
+  letter-spacing: normal;
 }
 .beer_title{
 	width: 90%;
 	border-bottom: 1px solid #C09048;
 	color: #483030;
 }
+.back_button_wrapper{
+	height: 80px;
+}
+.back_button_wrapper a{
+	text-decoration: none;
+}
+.back_button{
+	width: 50%;
+	height: 50%;
+	margin: 2% auto;
+	background-color: #4e3910;
+	color: white;
+	text-align: center;
+	padding-top: 2.5%;
+	font-size: 1.5em;
+	border-radius: 10px;
+	border-bottom: 4px solid #786048;
+}
+
+#beer_results{
+	background: url(../../images/ajax-loader.gif) 50% 50% no-repeat;
+}
+
