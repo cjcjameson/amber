@@ -4,16 +4,13 @@ class BeerPrioritizer
   end
 
   def find_beers
-    beers = Beer.where('category = ?', @genre)
-    sort_by_image_availability(beers)
+    random_twenty = Beer.where('category = ?', @genre).sample(20)
+    sort_by_image_availability(random_twenty)
   end
 
-  private
-
   def sort_by_image_availability(beers)
-    have_label_url = []
-    no_label_url = []
-    beers.each { |beer| beer.label_url ? have_label_url << beer : no_label_url << beer }
+    have_label_url = beers.select{ |beer| beer if beer.label_url }
+    no_label_url = beers.select{ |beer| beer unless beer.label_url }
     have_label_url + no_label_url
   end
 end

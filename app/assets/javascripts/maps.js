@@ -32,7 +32,8 @@ function yelpCall(event) {
 }
 
 function regenerateForm(data){
-  $('#beer_results').append('<p>Please input a valid zipcode</p>')
+  $('.alert').empty()
+  $('#beer_results').append('<p class="alert">Please input a valid postal code</p>')
 }
 
 function initializeMaps(data) {
@@ -57,9 +58,10 @@ function initializeMaps(data) {
     var url = addresses[i].url
     var name = addresses[i].name
     var image = addresses[i].image_url
+    var rating_image = addresses[i].rating_img_url_small
     var addressItem = addresses[i].location.display_address.join(" ")
     addressList.push(addressItem);
-    $('#search_results').append('<div class="business_box"><h5><a href="'+url+'">'+name+'</a></h5><div class="side_image"><img src="'+image+'"></div><p>'+addressItem+'</p></div>')
+    $('#search_results').append('<div class="business_box"><h5><a href="'+url+'">'+name+'</a></h5><div class="rating_image"><img src="'+rating_image+'"></div><div class="side_image"><img src="'+image+'"></div><p>'+addressItem+'</p></div>')
   }
   for (i in addressList){
     var address = addressList[i]

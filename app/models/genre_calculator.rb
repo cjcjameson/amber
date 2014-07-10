@@ -4,37 +4,32 @@ class GenreCalculator
   end
 
   def get_best_genre_matches
-    flavors = retrieve_flavors(@flavors)
-    matches = get_matches(flavors)
+    matches = @flavors.flat_map { |flavor| FoodFlavor.where('name = ?', flavor) }.
+                       flat_map { |flavor| flavor.matches }
     genres = get_genres(matches)
-    sort_and_extract_genres(genres)
+    top_four(genres)
   end
 
 private
-
-  def retrieve_flavors(flavors)
-    flavors.flat_map { |flavor| FoodFlavor.where('name = ?', flavor) }
-  end
-
-  def get_matches(flavors)
-    flavors.flat_map { |flavor| flavor.matches }
-  end
-
   def get_genres(matches)
     genres = matches.map do |match|
       { genre: BeerGenre.find(match.beer_genre_id), intensity: match.intensity }
     end
     genres.inject({}) do |result, match|
-      result[match[:genre]] ? result[match[:genre]] += match[:intensity] : result[match[:genre]] = match[:intensity]
+      if result[match[:genre]]
+        result[match[:genre]] += match[:intensity] 
+      else
+        result[match[:genre]] = match[:intensity]
+      end
       result
     end
   end
 
-  def sort_and_extract_genres(genres)
-    sorted_genres = genres.sort_by{|k,v| v}.reverse
-    top_four_genres = sorted_genres[0,4]
-    top_four_genres.map{ |genre_array| genre_array.first }
-
+  def top_four(genres)
+    genres.sort_by { |_, value| value }.
+            reverse.
+            first(4).
+            map{ |genres| genres.first }
   end
 
 end
