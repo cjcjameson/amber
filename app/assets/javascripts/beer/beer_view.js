@@ -1,7 +1,7 @@
-Beer.View = function(){
+Beers.View = function(){
 };
 
-Beer.View.prototype = {
+Beers.View.prototype = {
 	empty: function(target){
 		target.empty()
 	},
