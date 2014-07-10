@@ -46,8 +46,28 @@ describe Seed do
 			end
 		end
 	end
+
+	describe "when seeding matches" do
+		before(:each) do
+			Seed.flavors(File.read("#{Rails.root}/db/food_flavors.json"))
+			Seed.genres(File.read("#{Rails.root}/db/beer_genres.json"))
+		end
+
+		it "creates four matches for the 'Bitter' beer genre category" do
+			Seed.matches(File.read("#{Rails.root}/db/matches.json"))
+			expect(BeerGenre.find_by_name("Bitter").matches.length).to eq(4)
+		end
+	end
+
 end
 
 
-
+  def self.matches(matches)
+    all_matches = JSON.parse(matches)
+    all_matches.each do |match|
+      Match.create(beer_genre: BeerGenre.find_by_name(match["beer_genre"]),
+                  food_flavor: FoodFlavor.find_by_name(match["food_flavor"]),
+                  intensity: match["intensity"])
+    end
+  end
 
