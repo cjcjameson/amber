@@ -9,7 +9,6 @@ View.prototype = {
 		this.empty($('#beer_results'))
 		for (var i = 0; i < beers.length; i++){
 			this.drawBeer(beers[i])
-
 		}
 	},
 	drawBeer: function(beer){
