@@ -1,12 +1,10 @@
 $(function(){
   beersController = new Beers.Controller(new Beers.View())
+  zipcodeController = new Zipcodes.Controller(new Zipcodes.View())
   mapController = new Maps.Controller(new Maps.View())
   locationsController = new Locations.Controller(new Locations.View())
   beerGenresController = new BeerGenres.Controller(new BeerGenres.View())
-  // $('.back_button').click(function(){
-  //    $('html,body').animate({ scrollTop: $($(this).attr("href")).offset().top }, 'slow','swing');
-  //    return false;
-  //    })
+  
   // $('#beer_results img').hide();
 })
  
