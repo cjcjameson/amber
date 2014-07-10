@@ -1,8 +1,6 @@
 $(function(){
   beersController = new Beers.Controller(new Beers.View())
   mapController = new Maps.Controller(new Maps.View())
-  locationsController = new Locations.Controller(new Locations.View())
-  beerGenresController = new BeerGenres.Controller(new BeerGenres.View())
   
   // $('#beer_results img').hide();
 })

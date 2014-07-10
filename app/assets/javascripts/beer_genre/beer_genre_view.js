@@ -1,5 +1,4 @@
 BeerGenres.View = function(){
-
 }
 BeerGenres.View.prototype = {
 	drawGenre: function(dom){
