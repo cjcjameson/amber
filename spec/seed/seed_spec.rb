@@ -36,13 +36,17 @@ describe Seed do
 		end
 
 		context "when changing a beer category" do
-			it "uses the default category of the beer if it is not something we want to change" do
+			it "sets the category of the beer to the style of the beer if it is not something we want to change" do
 				beer = FactoryGirl.create(:beer, style: "Pond Water")
 				expect(Seed.set_beer_category(beer, beer.style).category).to eq("Pond Water")
 			end
-			it "changes a beer category from 'American-Style Cream Ale or Lager' to 'Cream Ale / Blonde Ale'" do
+			it "sets the beer category to 'Cream Ale / Blonde Ale' if it has the style 'American-Style Cream Ale or Lager'" do
 				beer = FactoryGirl.create(:beer, style: "American-Style Cream Ale or Lager")
 				expect(Seed.set_beer_category(beer, beer.style).category).to eq("Cream Ale / Blonde Ale")
+			end
+			it "sets the beer category to 'Old Ale / Strong Ale' if it has the style 'Strong Ale Belgian-Style Pale Strong Ale'" do
+				beer = FactoryGirl.create(:beer, style: "Strong Ale Belgian-Style Pale Strong Ale")
+				expect(Seed.set_beer_category(beer, beer.style).category).to eq("Old Ale / Strong Ale")
 			end
 		end
 	end
