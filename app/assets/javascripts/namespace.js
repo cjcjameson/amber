@@ -1,2 +1,3 @@
 Beers = {}
 Maps = {}
+Locations = {}
