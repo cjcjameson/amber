@@ -11,6 +11,8 @@ BeersController.prototype = {
 		var genre = this.captureChosenGenre(event.target.dataset.id)
 		this.clearGenres()
 		this.appendChosenGenre(genre)
+		this.view.empty($('#beer_results'))
+		this.beers = []
 		event.preventDefault();
 		this.ajaxSearch()
 	},
@@ -34,7 +36,7 @@ BeersController.prototype = {
 			for (var i = 0; i < beers.length; i++){
 				var beer = new Beer(beers[i].beers)
 				this.beers.push(beer)
-			}	
+			}
 			this.view.displayBeers(this.beers)
 		}.bind(this))
 	}
