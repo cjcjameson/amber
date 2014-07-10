@@ -1,7 +1,7 @@
-function View(){
+Beers.View = function(){
 };
 
-View.prototype = {
+Beers.View.prototype = {
 	empty: function(target){
 		target.empty()
 	},
@@ -10,7 +10,7 @@ View.prototype = {
 		for (var i = 0; i < beers.length; i++){
 			this.drawBeer(beers[i])
 		}
-	  $('#beer_results').append('<div class="sixteen columns back_button_wrapper"><a href="#search_viewport"><div class="back_button">Back To Top</div></a></div>')
+		$('#beer_results').append('<div class="sixteen columns back_button_wrapper"><a href="#search_viewport"><div class="back_button">Back To Top</div></a></div>')
 	},
 	drawBeer: function(beer){
 			var sampleBeer = $('#beer_template').children().clone()
