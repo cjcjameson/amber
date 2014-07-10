@@ -1,23 +1,24 @@
-function showZipForm(event) {
-  var genre_id = event.target.dataset.id
-  var genre = $('#'+genre_id).clone()
-  $('#search_results').empty()
-  $('#beer_results').empty()
-  $('#search_results').append(genre)
-  $('#beer_results').append('<form action="/location_lookup/result" class="zip_form" method="post" data-id="'+genre_id+'"> <p><input id="zipcode" name="zipcode" type="text" placeholder="postal code" /></p> <p><input name="commit" class="zip_code_button" type="submit" value="search" data-id="'+genre_id+'" /></p> </form>')
-  event.preventDefault();
+Maps.Controller = function(view){
+  this.view = view
+  this.initalizeEvents()
+  var geocoder;
+  var map;
+  var infoWindow;
 }
 
-var geocoder;
-var map;
-var infoWindow;
+Maps.Controller.prototype = {
+initalizeEvents: function(){
+  mapController = this;
+  $('#search_results').on('click', '.beer_map_button', this.view.showZipForm.bind(this))
+  $('#beer_results').on('click', '.zip_code_button', this.yelpCall.bind(this))
+},
 
-function yelpCall(event) {
+yelpCall: function(event){
   var genre_id = event.target.dataset.id
   var genre = $('#'+genre_id).clone()
   $('#search_results').empty()
   $('#search_results').append(genre)
-  var zipcode = $(this).parent().parent().serialize().replace("zipcode=", "")
+  var zipcode = $('#zipcode').val()
   event.preventDefault();
   $.ajax({
     url: '/location_lookup/result',
@@ -25,18 +26,18 @@ function yelpCall(event) {
     data: {genre: genre_id, zipcode: zipcode},
     dataType: 'json'
   }).done(function(data){
-    initializeMaps(data)
-  }).fail(function(data){
-    regenerateForm(data)
-  })
-}
+    this.initializeMaps(data)
+  }.bind(this)).fail(function(data){
+    this.regenerateForm(data)
+  }.bind(this))
+},
 
-function regenerateForm(data){
+regenerateForm: function(data){
   $('.alert').empty()
   $('#beer_results').append('<p class="alert">Please input a valid postal code</p>')
-}
+},
 
-function initializeMaps(data) {
+initializeMaps: function(data) {
   $('#beer_results').empty()
   var map = $('#map_template').children().clone()
   $('#search_results').append(map)
@@ -82,3 +83,12 @@ function initializeMaps(data) {
     });
   }
 }
+
+  
+}
+
+
+
+
+
+

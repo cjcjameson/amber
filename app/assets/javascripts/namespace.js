@@ -1,2 +1,4 @@
 Beers = {}
-Map = {}
+Maps = {}
+Locations = {}
+BeerGenres = {}
