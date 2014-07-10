@@ -39,29 +39,12 @@ Maps.Controller.prototype = {
     this.view.createCanvas()
     var mapModel = new Map(data)
     map = new google.maps.Map(document.getElementById("map-canvas"), mapModel.mapOptions);
-    infoWindow = new google.maps.InfoWindow({
+    var locationController = new Locations.Controller(new Locations.View(),data.data)
+    var infoWindow = new google.maps.InfoWindow({
             content: "..."
           });
-    var locationController = new Locations.Controller(new Locations.View(),data.data)
-
-    for (i in locationController.addressList){
-      var location = locationController.addressList[i]
-      mapModel.geocoder.geocode({'address': location.address}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location,
-              html: '<div class="infoWindow"><p>'+results[0].formatted_address+'</p></div>'
-          });
-          google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent(this.html);
-            infoWindow.open(map, this);
-          });
-        }
-      });
-    }
+    locationController.plotLocations(infoWindow, mapModel, map)
   }
-
   
 }
 

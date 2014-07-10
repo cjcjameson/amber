@@ -1,5 +1,4 @@
 Maps.View = function(){
-
 }
 Maps.View.prototype = {
 	createCanvas: function(){
