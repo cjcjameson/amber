@@ -1,9 +1,10 @@
-function BeersController(view){
+Beers.Controller = function(view){
 	this.view = view;
 	this.beers = [];
 	this.bindView()
 }
-BeersController.prototype = {
+
+Beers.Controller.prototype = {
 	bindView: function(){
 		$('#search_results').on('click', '.beer_search_button', this.getBeers.bind(this) )
 	},
@@ -12,6 +13,7 @@ BeersController.prototype = {
 		this.clearGenres()
 		this.appendChosenGenre(genre)
 		event.preventDefault();
+		this.beers=[]
 		this.ajaxSearch()
 	},
 	captureChosenGenre: function(genreId){
