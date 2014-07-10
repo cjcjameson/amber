@@ -9,8 +9,13 @@ Maps.Controller = function(view){
 Maps.Controller.prototype = {
 initalizeEvents: function(){
   mapController = this;
-  $('#search_results').on('click', '.beer_map_button', this.view.showZipForm.bind(this))
+  $('#search_results').on('click', '.beer_map_button', this.showZipForm.bind(this))
   $('#beer_results').on('click', '.zip_code_button', this.yelpCall.bind(this))
+},
+showZipForm: function(event) {
+  var genre_id = event.target.dataset.id
+  new BeerGenres.Controller(new BeerGenres.View())
+  zipcodeController = new Zipcodes.Controller(new Zipcodes.View(), genre_id)
 },
 
 yelpCall: function(event){
