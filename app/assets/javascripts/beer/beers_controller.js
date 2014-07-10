@@ -1,9 +1,10 @@
-function BeersController(view){
+Beers.Controller = function(view){
 	this.view = view;
 	this.beers = [];
 	this.bindView()
 }
-BeersController.prototype = {
+
+Beers.Controller.prototype = {
 	bindView: function(){
 		$('#search_results').on('click', '.beer_search_button', this.getBeers.bind(this) )
 	},
@@ -11,9 +12,8 @@ BeersController.prototype = {
 		var genre = this.captureChosenGenre(event.target.dataset.id)
 		this.clearGenres()
 		this.appendChosenGenre(genre)
-		this.view.empty($('#beer_results'))
-		this.beers = []
 		event.preventDefault();
+		this.beers=[]
 		this.ajaxSearch()
 	},
 	captureChosenGenre: function(genreId){
@@ -36,7 +36,7 @@ BeersController.prototype = {
 			for (var i = 0; i < beers.length; i++){
 				var beer = new Beer(beers[i].beers)
 				this.beers.push(beer)
-			}
+			}	
 			this.view.displayBeers(this.beers)
 		}.bind(this))
 	}
