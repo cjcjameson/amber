@@ -1,2 +1,2 @@
 Beers = {}
-Map = {}
+Maps = {}
