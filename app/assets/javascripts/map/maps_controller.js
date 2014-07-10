@@ -16,6 +16,7 @@ initalizeEvents: function(){
 yelpCall: function(event){
   var genre_id = event.target.dataset.id
   var genre = $('#'+genre_id).clone()
+  debugger  
   $('#search_results').empty()
   $('#search_results').append(genre)
   var zipcode = $('#zipcode').val()
