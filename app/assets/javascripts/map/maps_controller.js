@@ -14,16 +14,13 @@ initalizeEvents: function(){
 },
 showZipForm: function(event) {
   var genre_id = event.target.dataset.id
-  new BeerGenres.Controller(new BeerGenres.View())
+  var beerGenreController = new BeerGenres.Controller(new BeerGenres.View())
   zipcodeController = new Zipcodes.Controller(new Zipcodes.View(), genre_id)
 },
 
 yelpCall: function(event){
   var genre_id = event.target.dataset.id
-  var genre = $('#'+genre_id).clone()
-  debugger  
-  $('#search_results').empty()
-  $('#search_results').append(genre)
+  var beerGenreController = new BeerGenres.Controller(new BeerGenres.View())
   var zipcode = $('#zipcode').val()
   event.preventDefault();
   $.ajax({
@@ -32,19 +29,14 @@ yelpCall: function(event){
     data: {genre: genre_id, zipcode: zipcode},
     dataType: 'json'
   }).done(function(data){
-    this.initializeMaps(data)
+    this.initializeMaps(data, zipcodeController)
   }.bind(this)).fail(function(data){
-    this.regenerateForm(data)
-  }.bind(this))
+    zipcodeController.view.regenerateForm(data)
+  })
 },
 
-regenerateForm: function(data){
-  $('.alert').empty()
-  $('#beer_results').append('<p class="alert">Please input a valid postal code</p>')
-},
-
-initializeMaps: function(data) {
-  $('#beer_results').empty()
+initializeMaps: function(data, zipCon) {
+  zipCon.view.clearForm()
   var map = $('#map_template').children().clone()
   $('#search_results').append(map)
   var lat = data.latitude
