@@ -5,7 +5,49 @@
   text-align: center;
   width: 100%;
 }
+.zip_code_button {
+  background-color: #c79c4c;
+  color: #4e3910;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid #906d2a;
+  font-size: 1.5em;
+}
 .zip_form {
   width: 50%;
   margin: 0 auto;
+}
+.alert {
+  text-align: center;
+}
+.side_image {
+  float: left;
+  margin-right: 5%;
+}
+.business_box {
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 500px;
+  min-height: 175px;
+  padding: 0% 0.5%, 0%, 0.5%;
+  clear: both;
+}
+.business_box h5 {
+  margin-bottom: 2%;
+  text-align: center;
+}
+.business_box a {
+  text-decoration: none;
+  color: #684d19;
+  font-size: 1.5em;
+}
+.business_box a:hover {
+  border-bottom: 2px solid #ed9c00;
+}
+.business_box p {
+  padding: 3%;
+  color: #4e4533;
 }
