@@ -1,6 +1,5 @@
 $(function(){
   beersController = new Beers.Controller(new Beers.View())
-  zipcodeController = new Zipcodes.Controller(new Zipcodes.View())
   mapController = new Maps.Controller(new Maps.View())
   locationsController = new Locations.Controller(new Locations.View())
   beerGenresController = new BeerGenres.Controller(new BeerGenres.View())
