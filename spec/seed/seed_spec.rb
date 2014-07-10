@@ -36,18 +36,42 @@ describe Seed do
 		end
 
 		context "when changing a beer category" do
-			it "uses the default category of the beer if it is not something we want to change" do
+			it "sets the category of the beer to the style of the beer if it is not something we want to change" do
 				beer = FactoryGirl.create(:beer, style: "Pond Water")
 				expect(Seed.set_beer_category(beer, beer.style).category).to eq("Pond Water")
 			end
-			it "changes a beer category from 'American-Style Cream Ale or Lager' to 'Cream Ale / Blonde Ale'" do
+			it "sets the beer category to 'Cream Ale / Blonde Ale' if it has the style 'American-Style Cream Ale or Lager'" do
 				beer = FactoryGirl.create(:beer, style: "American-Style Cream Ale or Lager")
 				expect(Seed.set_beer_category(beer, beer.style).category).to eq("Cream Ale / Blonde Ale")
 			end
+			it "sets the beer category to 'Old Ale / Strong Ale' if it has the style 'Strong Ale Belgian-Style Pale Strong Ale'" do
+				beer = FactoryGirl.create(:beer, style: "Strong Ale Belgian-Style Pale Strong Ale")
+				expect(Seed.set_beer_category(beer, beer.style).category).to eq("Old Ale / Strong Ale")
+			end
 		end
 	end
+
+	describe "when seeding matches" do
+		before(:each) do
+			Seed.flavors(File.read("#{Rails.root}/db/food_flavors.json"))
+			Seed.genres(File.read("#{Rails.root}/db/beer_genres.json"))
+		end
+
+		it "creates four matches for the 'Bitter' beer genre category" do
+			Seed.matches(File.read("#{Rails.root}/db/matches.json"))
+			expect(BeerGenre.find_by_name("Bitter").matches.length).to eq(4)
+		end
+	end
+
 end
 
 
-
+  def self.matches(matches)
+    all_matches = JSON.parse(matches)
+    all_matches.each do |match|
+      Match.create(beer_genre: BeerGenre.find_by_name(match["beer_genre"]),
+                  food_flavor: FoodFlavor.find_by_name(match["food_flavor"]),
+                  intensity: match["intensity"])
+    end
+  end
 

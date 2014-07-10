@@ -55,74 +55,13 @@ class Seed
     end
   end
 
-  def self.set_beer_category(beer, default_style)
-    case beer.style
-    when "American-Style Cream Ale or Lager", "Golden or Blonde Ale", "Belgian-Style Blonde Ale"
-      beer.category = "Cream Ale / Blonde Ale"
-    when "Ordinary Bitter", "Special Bitter or Best Bitter", "Extra Special Bitter"
-      beer.category = "Bitter"
-    when "Classic English-Style Pale Ale", "American-Style Pale Ale", "American-Style Strong Pale Ale", "Belgian-Style Pale Ale", "International-Style Pale Ale", "Australasian-Style Pale Ale"
-      beer.category = "Pale Ale"
-    when "English-Style India Pale Ale", "American-Style India Pale Ale"
-      beer.category = "IPA"
-    when "Imperial or Double India Pale Ale"
-      beer.category = "Double IPA"
-    when "American-Style Amber/Red Ale", "Irish-Style Red Ale"
-      beer.category = "Amber Ale / Red Ale"
-    when "Scotch Ale"
-      beer.category = "Scotch Ale"
-    when "English-Style Brown Ale", "American-Style Brown Ale", "German-Style Brown Ale / Düsseldorf-Style Altbier"
-      beer.category = "Brown Ale / Altbier"
-    when "Belgian-Style Dubbel"
-      beer.category = "Abbey Dubbel"
-    when "Belgian-Style Tripel"
-      beer.category = "Abbey Tripel"
-    when "Old Ale", "Strong Ale Belgian-Style Pale Strong Ale", "Belgian-Style Dark Strong Ale"
-      beer.category = "Old Ale / Strong Ale"
-    when "British-Style Barley Wine Ale", "American-Style Barley Wine Ale"
-      beer.category = "Barley Wine"
-    when "Brown Porter", "Robust Porter", "Smoke Porter", "Baltic-Style Porter", "American-Style Imperial Porter"
-      beer.category = "Porter"
-    when "Classic Irish-Style Dry Stout"
-      beer.category = "Dry Stout"
-    when "Oatmeal Stout", "Sweet or Cream Stout"
-      beer.category = "Oatmeal Stout"
-    when "British-Style Imperial Stout", "American-Style Imperial Stout"
-      beer.category = "Imperial Stout"
-    when "South German-Style Hefeweizen / Hefeweissbier"
-      beer.category = "Hefeweizen"
-    when "Light American Wheat Ale or Lager with Yeast", "Light American Wheat Ale or Lager without Yeast"
-      beer.category = "American Wheat"
-    when "Belgian-Style White (or Wit) / Belgian-Style Wheat"
-      beer.category = "Witbier"
-    when "South German-Style Dunkel Weizen / Dunkel Weissbier", "Bamberg-Style Weiss (Smoke) Rauchbier (Dunkel or Helles)"
-      beer.category = "Dunkelweizen"
-    when "South German-Style Weizenbock / Weissbock"
-      beer.category = "Weizenbock"
-    when "German-Style Pilsener", "Bohemian-Style Pilsener", "American-Style Pilsener", "International-Style Pilsener"
-      beer.category = "Pilsener"
-    when "Münchner (Munich)-Style Helles", "Bamberg-Style Helles Rauchbier", "Dortmunder / European-Style Export"
-      beer.category = "Helles / Dortmuner"
-    when "Vienna-Style Lager"
-      beer.category = "Vienna"
-    when "American-Style Amber Lager"
-      beer.category = "Amber Lager"
-    when "American-Style Dark Lager"
-      beer.category = "Dark Lager"
-    when "German-Style Heller Bock/Maibock"
-      beer.category = "Maibock"
-    when "German-Style Doppelbock"
-      beer.category = "Doppelbock"
-    when "French & Belgian-Style Saison"
-      beer.category = "Saison"
-    when "Belgian-Style Lambic", "Belgian-Style Gueuze Lambic"
-      beer.category = "Lambic"
-    else 
-      beer.category = default_style
+  def self.set_beer_category(beer, default_category)
+    style_list = JSON.parse(File.read("#{Rails.root}/db/categories_and_styles.json"))
+    beer.category = default_category
+    style_list.each do |category, styles|
+      beer.category = category if styles.include?(beer.style)
     end
     beer
   end
-
-
 
 end
