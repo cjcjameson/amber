@@ -42,6 +42,8 @@
 {"beer_genre": "Porter", "food_flavor": "bitter", "intensity": 5},
 {"beer_genre": "Abbey Dubbel", "food_flavor": "salty", "intensity": 3},
 {"beer_genre": "Abbey Dubbel", "food_flavor": "savory", "intensity": 5},
+{"beer_genre": "Abbey Dubbel", "food_flavor": "sweet", "intensity": 4},
+{"beer_genre": "Abbey Dubbel", "food_flavor": "rich", "intensity": 4},
 {"beer_genre": "Abbey Tripel", "food_flavor": "floral", "intensity": 3},
 {"beer_genre": "Abbey Tripel", "food_flavor": "sweet", "intensity": 2},
 {"beer_genre": "Abbey Tripel", "food_flavor": "nutty", "intensity": 4},
